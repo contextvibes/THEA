@@ -1,0 +1,34 @@
+{
+  // Default state for all rules
+  "default": true,
+
+  // MD013/line-length: Disabled for now, can be too restrictive initially.
+  "MD013": false,
+
+  // MD022/blanks-around-headings: Headings should be surrounded by blank lines.
+  "MD022": true,
+
+  // MD024/no-duplicate-heading: No duplicate headings in the same document.
+  // "MD024": { "siblings_only": true }, // Allow duplicate headings if not at the same level. Useful for changelogs.
+                                      // Let's keep it simple for now and allow duplicates if needed.
+  "MD024": false, // Disable for now, Scribe/Canon can fine-tune
+
+  // MD025/single-title/single-h1: Document should begin with a single top-level heading.
+  // "MD025": { "level": 1, "front_matter_title": "" }, // Standard setting
+  "MD025": { "level": 1, "front_matter_title": null }, // Allow no front matter title for simpler MD files
+
+  // MD030/list-marker-space: Spaces after list markers.
+  "MD030": { "ul_single": 1, "ol_single": 1, "ul_multi": 1, "ol_multi": 1 }, // Enforce 1 space
+
+  // MD032/blanks-around-lists: Lists should be surrounded by blank lines.
+  "MD032": true,
+
+  // MD033/no-inline-html: Disabled for now, as sometimes inline HTML is needed (e.g., for comments or specific formatting).
+  "MD033": false,
+
+  // MD041/first-line-heading/first-line-h1: First line in file should be a top-level heading.
+  "MD041": false // Disable for now, not all our docs start with H1 (e.g. .idx/airules.md)
+}
+// For a full list of rules and configuration options, see:
+// https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+// This is a .jsonc file, so comments are allowed.

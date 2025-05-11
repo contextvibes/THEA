@@ -1,0 +1,40 @@
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- IDE Specific (Common shared settings are usually NOT ignored) ---
+# VS Code - allow shared settings, ignore workspace state
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+# Other IDE's workspace/user-specific files
+.idea/workspace.xml
+.idea/shelf/
+*.iml
+
+# --- Log Files ---
+*.log
+contextvibes_ai_trace.log
+
+# --- Nix & Direnv ---
+result
+result-*
+.direnv/
+
+# --- Common Temporary/Backup Files ---
+*~
+*.swp
+*.swo
+*.bak
+*.old
+*.tmp
+
+# --- Locally Installed Tools / Build Outputs ---
+bin/
+
+# --- ContextVibes CLI Output Files ---
+contextvibes.md
+contextvibes_*.md

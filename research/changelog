@@ -1,0 +1,354 @@
+Crafting and Understanding Effective changelog.md Files: A Blueprint for AI AssistanceI. Introduction to Changelogs and Their StandardizationA. Defining changelog.mdA changelog.md file is a crucial document in software development that provides a curated, chronologically ordered list of notable changes for each version of a project.1 Its primary purpose is to serve as a historical record, enabling users and contributors to track the evolution of the software over time, understand what has been added, fixed, modified, or removed with each release, and generally stay informed about the project's progress.1 Unlike raw commit logs, which detail the "how" of changes, a changelog focuses on the "why" and the "what" from a user-impact perspective.2 It is fundamentally designed for human comprehension rather than machine processing, emphasizing legibility and clarity.2 The conventional filename CHANGELOG.md (or similar variants like HISTORY.md, RELEASES.md) is often in uppercase to draw attention to its importance as project metadata, similar to README.md or LICENSE.md.2B. The "Why": Importance of a Good ChangelogA well-maintained changelog is indispensable for fostering transparent communication between project maintainers, developers, and end-users.1 It acts as a centralized and accessible source of information regarding project updates, mitigating the need for stakeholders to sift through potentially convoluted source code commit histories or disparate documentation versions to understand what has changed.3 This transparency builds trust with the user base, demonstrating a commitment to ongoing improvement and accountability.1 For developers, it provides a quick overview of recent changes, aiding in collaboration and reducing the chances of duplicated effort. For users, it offers clarity on new features, bug fixes that might affect their experience, and deprecated functionalities they need to be aware of. This clear communication channel is vital for managing expectations and ensuring a smoother adoption of new versions.C. The "How": Standardization with "Keep a Changelog" (KaC) and Semantic Versioning (SemVer)To maximize the utility and clarity of changelogs, widely adopted conventions have emerged. The "Keep a Changelog" (KaC) initiative provides a set of principles and a standardized format for writing changelogs, aiming to make them easier to read, write, and parse (by humans and potentially by tools).2 This format emphasizes human readability, chronological ordering, and specific categories for changes.Complementing KaC, Semantic Versioning (SemVer) offers a standardized way to number software releases, ensuring that version numbers themselves convey meaning about the nature of the changes.5 The MAJOR.MINOR.PATCH system allows developers and users to quickly understand the potential impact of upgrading to a new version—whether it includes breaking changes (MAJOR), new backward-compatible features (MINOR), or just bug fixes (PATCH).5The synergy between KaC and SemVer is significant. KaC provides the structure and content guidelines for what to communicate in a changelog, while SemVer offers a consistent system for labeling those communications through version numbers.1 When used together, they create a powerful framework for clearly and consistently documenting a project's evolution, making it easier for everyone involved to understand the trajectory and impact of development efforts. This combination ensures that the changelog is not just a list of changes, but a meaningful narrative of the project's lifecycle.II. Foundational Elements of a "Keep a Changelog" Compliant changelog.mdA. Core Principles of "Keep a Changelog"The "Keep a Changelog" (KaC) guidelines are designed to ensure that changelogs are useful, informative, and easy to maintain. Several core principles underpin this standard 2:
+Human Readability: Changelogs are primarily for humans. The language should be clear, and the format should prioritize legibility.
+Easy Linking: Using Markdown allows for easy linking to specific sections, versions, or even individual entries, enhancing navigability.
+One Sub-section Per Version: Each released version should have its own distinct section.
+Reverse Chronological Order: The newest releases should appear at the top of the file, making the latest changes immediately accessible.
+Standard Date Format: All release dates should follow the YYYY-MM-DD format (e.g., 2023-10-26), which is an ISO standard, ensuring international consistency.
+Semantic Versioning Adherence: The changelog should explicitly state if the project follows Semantic Versioning. Version numbers in the changelog should align with SemVer principles.
+Defined Change Types: Changes within each version should be grouped under specific, predefined categories (e.g., Added, Fixed) to clearly communicate their impact.
+"Unreleased" Section: An "Unreleased" section should be maintained at the top to list changes made since the last release.
+Adherence to these principles functions as a form of "social contract" between the project maintainers and its community. When users and contributors see a KaC-compliant changelog, they can trust that the information will be presented in a consistent, predictable, and understandable manner. This reliability fosters confidence in the project's maintenance and communication practices.B. Semantic Versioning (SemVer) in DetailSemantic Versioning (SemVer) provides a formal convention for assigning version numbers to software releases. The version number is typically expressed in a MAJOR.MINOR.PATCH format, where each component has a specific meaning regarding the changes introduced in that release 5:
+MAJOR version (X.y.z): Incremented when incompatible API changes are made. This signals to users that the update may require them to modify their own code or configurations to maintain compatibility.
+MINOR version (x.Y.z): Incremented when new functionality is added in a backward-compatible manner. Users can typically upgrade to a new minor version without breaking existing integrations.
+PATCH version (x.y.Z): Incremented when backward-compatible bug fixes are made. These releases are generally considered safe to apply as they address issues without introducing new features or breaking changes.
+Each version number is always incremented by one, and when a higher-level component (e.g., MAJOR) is incremented, the lower-level components (e.g., MINOR, PATCH) are reset to zero.5 For example, if the current version is 1.5.2, a new feature release would be 1.6.0, and a subsequent bug fix would be 1.6.1. A major breaking change would lead to version 2.0.0.SemVer effectively functions as an "impact language." The version number itself communicates the potential risk and effort involved in upgrading. A MAJOR version change signals a need for careful review and potential refactoring, while a PATCH change suggests a low-risk update. This clear signaling is invaluable for dependency management and for users planning their upgrade cycles.C. Interplay: Versioning and Dating ConventionsThe "Keep a Changelog" format and Semantic Versioning work in tandem to structure the changelog effectively. A key aspect is the "Unreleased" section, which should always be present at the top of the changelog.md file.1 This section serves as a staging area for accumulating notes on changes as they are implemented. Its dual purpose is to provide visibility into what might be included in the next release and to simplify the release process itself: when a release is made, the "Unreleased" heading is simply replaced with the new version number and date, and a new "Unreleased" section is added above it.2Version headings follow a consistent format: ## [Version.Number.Here] - YYYY-MM-DD.1 For example: ## [1.1.0] - 2021-08-24. Linking the version number to the corresponding tag or release page on a platform like GitHub is a recommended practice, offering users a direct path to the source code or binaries for that specific version.7The date format YYYY-MM-DD is mandated by KaC because it is an ISO 8601 standard.2 This format is unambiguous, internationally understood, and sorts correctly, which is crucial for maintaining a clear chronological record. Using a globally recognized standard avoids confusion that can arise from region-specific date formats (e.g., MM/DD/YYYY vs. DD/MM/YYYY).D. Standard Change CategoriesWithin each version entry, KaC specifies that changes should be grouped into standard categories. This categorization helps users quickly identify the types of changes that are most relevant to them.1 The standard categories are:Category NameDescription (Purpose & Scope)Example EntryAddedFor new features or significant new capabilities.- Add user profile customization options.ChangedFor changes in existing functionality.- Modify authentication flow to support OAuth 2.0.DeprecatedFor features that are being phased out and will be removed soon.- Deprecate legacy API endpoint/v1/users. Please migrate to/v2/users.RemovedFor features that were previously deprecated and are now removed.- Remove support for TLS 1.0 and 1.1.FixedFor any bug fixes.- Fix issue where user avatars were not displaying correctly on mobile.SecurityFor changes that address security vulnerabilities.- Address XSS vulnerability in comment rendering. (CVE-2024-XXXXX)Table 1: Standard Changelog CategoriesUsing these consistent categories is fundamental to a well-structured changelog. It provides an unambiguous reference for human authors and is essential for programming an AI to correctly classify and generate changelog entries. If a version has no changes for a particular category, that category heading should be omitted for that version to avoid clutter.7III. Mastering the Art of Changelog EntriesA. Language and ToneThe effectiveness of a changelog entry hinges significantly on its language and tone. The overarching principle is user-centricity: entries should be written primarily for the users of the software, not just for fellow developers.2 This means explaining the impact of a change from the user's perspective. For instance, instead of a purely technical description like "Refactored the database query optimizer," a more user-centric entry might be "Improved search result loading times by optimizing database queries."Clarity and conciseness are paramount.8 Entries should be easy to understand, even for users who may not be deeply technical. Technical jargon should be avoided or explained if its use is unavoidable.8 Bullet points are preferred over long paragraphs to enhance readability and allow users to quickly scan for relevant information.8A common best practice, advocated by resources like the Common Changelog, is to use the imperative mood for entries, starting them with a present-tense verb (e.g., "Add," "Fix," "Change").13 This convention clearly communicates the action or intent of the change and contributes to consistency across the changelog. For example, "Add support for two-factor authentication" is preferred over "Added support for two-factor authentication" or "Support for two-factor authentication has been added."Simply stating what changed (e.g., "Updated library X to version Y") often falls short of providing true value to the user. It's crucial to also convey why the change was made or what the benefit is (e.g., "Update library X to version Y to improve performance by 20% and resolve critical security vulnerability Z").6 This focus on impact and value is a hallmark of user-centric communication. GitLab's documentation provides excellent examples, contrasting vague entries with good ones that highlight user benefits.15 Similarly, asking "What pain points does this update address?" or "What is the value proposition of this update?" can guide the writing process towards more meaningful entries.8 Ultimately, users want to understand how changes affect them.6B. Content Best PracticesCrafting high-quality changelog entries involves more than just summarizing technical work. It requires a deliberate approach to ensure the information is meaningful and accessible.Changelog entries are distinct from raw git commit messages. While commit messages serve developers by detailing the history of code changes, changelog entries are curated for a broader audience, including end-users.3 Therefore, commit messages often need to be rephrased or aggregated to be suitable for the changelog, focusing on the user-facing impact rather than implementation details.13Descriptions of changes should be meaningful, providing enough detail for users to understand the modification without being overly verbose or technical.1 The goal is to inform, not to overwhelm.Acknowledging contributors who have made significant contributions to a release is a good practice that can foster a sense of community and appreciation.1 This is often done at the end of a release section or sometimes noted per entry, particularly in open-source projects.17The following table illustrates common pitfalls and best practices for writing changelog entries:AspectDo (Good Example & Why)Don't (Poor Example & Why)User FocusImprove login speed by optimizing database queries. (Focuses on user benefit)Refactored UserLoginService. (Internal detail, no clear user impact)Clarity (Imperative Mood)Add two-factor authentication via SMS. (Clear, active, imperative)Two-factor authentication was added. (Passive, less direct)Detail LevelFix issue where images failed to load on product pages for users on Safari 15. (Specific, actionable)Fixed some image bugs. (Vague, unhelpful)ReferencingResolve intermittent checkout failures (Issue #123, PR #125). (Provides traceability)Fixed checkout. (No context for further investigation)Table 2: Changelog Entry Best Practices – Do's and Don'tsThese examples highlight that effective entries are specific, focus on user impact, use active language, and provide context where necessary. This approach makes the changelog a more valuable resource for all stakeholders.C. The Value of Connectivity: Linking to Issues, Pull Requests, and CommitsIncorporating links from changelog entries to relevant issue tracker items (e.g., GitHub Issues, Jira tickets), pull requests (PRs), or specific commit hashes significantly enhances the changelog's utility.1 These links provide a direct pathway for users and developers to access more detailed information, discussions, and the actual code changes related to a particular entry.This traceability is invaluable for several reasons:
+Deeper Context: Users or developers encountering a change can follow the links to understand the original problem report (issue), the discussion around the fix or feature (issue/PR comments), and the specific implementation details (PR code diff, commit messages).
+Troubleshooting: If a change introduces unexpected behavior, linked resources can help diagnose the root cause more quickly.
+Learning: Developers can learn from how specific issues were resolved or features were implemented by examining the linked PRs and commits.
+The Common Changelog guide explicitly states that "changes must reference relevant commits, and should reference tickets or pull requests when available" and that these references should be Markdown links placed at the end of the change description line.13 Discussions within developer communities also affirm the helpfulness of such links for gaining more detailed insights beyond the concise changelog entry.16While changelogs are designed to be user-centric and less technical than commit logs 3, these links act as a crucial bridge. They allow the main changelog to remain concise and focused on user impact, while still providing an optional "deep dive" into the technical specifics for those who need or desire it. This layered approach to information caters effectively to a diverse audience, from end-users seeking a high-level overview to developers needing granular details, thereby maximizing the changelog's overall value.IV. Engineering an Effective AI Prompt for Changelog ManagementA. Guiding Principles for AI InstructionInstructing an Artificial Intelligence to generate or understand changelog.md files effectively requires a well-structured prompt that incorporates principles similar to those used in configuring AI coding assistants (like those using .idx/airules.md or .cursorrules files).18 These principles include:
+Clear Context: Providing the AI with background information about the project and the purpose of the changelog.
+Role Definition (Persona): Assigning a specific role to the AI (e.g., "expert technical writer") to guide its tone and style.
+Specificity: Giving precise, unambiguous instructions regarding format, content, and style.
+Examples: Illustrating desired outputs or patterns with concrete examples.
+Logical Structure: Organizing the rules and guidelines within the prompt in a clear, hierarchical manner.
+Verification Steps (for analysis): Defining how the AI should assess compliance with the given rules.
+The process of crafting such a prompt shares many similarities with writing a detailed software requirements specification. Just as a requirements document outlines what a system must do, its inputs, outputs, constraints, and quality attributes, an AI prompt for changelog management must clearly define these aspects to ensure the AI produces high-quality, compliant output. For example, specifying the KaC structure 2, content types like Added or Fixed 2, and stylistic requirements like user-centric language and imperative mood 8 are all akin to defining functional and non-functional requirements for a software system. Tips from resources like Trigger.dev for .cursorrules emphasize starting with a high-level overview, specifying essential elements, providing example patterns, and including verification steps, all of which map directly to robust requirement definition.20B. Defining the AI's Persona and ObjectivesTo ensure the AI performs its task effectively, its persona and objectives must be clearly defined within the prompt.
+
+Persona: "You are an expert technical writer and open-source maintainer, specializing in creating clear, concise, and user-friendly changelog.md files. You strictly adhere to the 'Keep a Changelog' (KaC) formatting conventions and Semantic Versioning (SemVer) principles. Your writing is user-centric, focusing on the impact and benefits of changes." This persona draws inspiration from examples where AI assistants are given expert roles.19
+
+
+Objective 1 (Generation): "Your primary goal is to generate a complete changelog.md file or a new version entry for an existing one. The input will be a structured list of changes (derived from commits, pull requests, issue data, and/or developer notes), the project name, current version, previous version (if applicable), and the release date. The output must be accurate, well-formatted according to KaC standards, and clearly communicate the changes to users."
+
+
+Objective 2 (Understanding/Analysis): "Your primary goal is to analyze an existing changelog.md file (or a specific version entry) for adherence to the 'Keep a Changelog' standard, Semantic Versioning consistency, clarity, user-centricity, and other best practices defined herein. You will identify areas of compliance and non-compliance, providing specific, actionable recommendations for improvement, including line numbers or section references where applicable."
+
+Setting these parameters helps the AI focus its capabilities and tailor its output to meet the specific requirements of changelog management.C. Essential Contextual Inputs for the AIThe quality of the AI's output is directly dependent on the quality and completeness of the input it receives.
+
+Project Information:
+
+Project Name: For use in any introductory text or if the changelog is part of a larger documentation set.
+Repository URL: Essential for generating correct links to versions/tags, issues, and PRs.
+Current Version Number: The version for which the changelog entry is being generated.
+Previous Version Number: Useful for context, especially if the AI needs to generate links for version comparisons (e.g., [Compare with v1.1.0]).
+Release Date: For the current version entry.
+
+
+
+Audience Definition:
+
+Specify the primary audience (e.g., "highly technical developers," "mixed technical and non-technical users," "primarily non-technical end-users"). This will influence the AI's choice of language, level of detail, and avoidance of jargon.8
+
+
+
+Input Data for Generation Task:
+
+A structured list of changes. Each item could include:
+
+type: The nature of the change (e.g., 'feature', 'bugfix', 'security', 'refactor', 'docs', or directly a KaC category like 'Added', 'Fixed').
+description: The raw text from a commit message, PR title, or developer note.
+issue_link / issue_number: URL or number of the related issue.
+pr_link / pr_number: URL or number of the related pull request.
+commit_hash: Relevant commit SHA(s).
+author_notes: Any additional context or user-impact explanation provided by the developer.
+breaking_change: Boolean, indicating if the change is breaking.
+
+
+Alternatively, a block of raw git log output could be provided for the AI to parse, though this is a more complex task requiring more sophisticated parsing rules.
+
+
+
+Input Data for Analysis Task:
+
+The complete text content of the changelog.md file to be analyzed, or a specific section/version entry.
+
+
+Providing comprehensive context, as suggested for airules.md 19, enables the AI to produce more relevant, accurate, and useful changelog content or analysis.D. Core Instructional Blocks for the AI PromptTo guide the AI effectively, the prompt should be broken down into distinct instructional blocks, each addressing a specific aspect of changelog creation or analysis. This structured approach mirrors the detailed rule sets found in AI customization files like .idx/airules.md 18 and .cursorrules.20
+
+1. Format and Structural Mandates (KaC Compliance):
+
+Filename: The output should be intended for a file named CHANGELOG.md.
+Encoding: Assume UTF-8.
+Overall Header: The document must start with a primary heading: # Changelog. This should be followed by a brief introductory paragraph stating that the format is based on "Keep a Changelog" and that the project adheres to "Semantic Versioning," linking to their respective websites (e.g., [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), (https://semver.org/spec/v2.0.0.html)).1
+"Unreleased" Section: If generating for changes not yet released, an ## [Unreleased] section must be at the top. This section should list changes made since the last tagged release.
+Version Sections: Entries must be organized in reverse chronological order (newest version first). Each version section must start with a level 2 Markdown heading: ## [Version.Number.Here] - YYYY-MM-DD. The version number (e.g., [1.2.3]) should be a Markdown link to the corresponding tag or release on the project's repository (construct this link using the provided repository URL and version number).
+Change Categories: Within each version section, all changes MUST be grouped under the following level 3 Markdown headings, in this order: ### Added, ### Changed, ### Deprecated, ### Removed, ### Fixed, ### Security. If a version has no changes for a specific category, that category heading MUST be omitted for that version.7
+Individual Entries: Each distinct change within a category must be listed as a bullet point, starting with -.
+
+
+
+2. Content Generation Rules (by category):
+
+General Transformation: Convert the provided input data (commit messages, PR titles, issue descriptions, developer notes) into user-centric changelog entries. Focus on the impact of the change on the user or the system's behavior from a user's perspective.
+Added: Clearly describe new features, functionalities, or significant enhancements introduced.
+Changed: Detail modifications to existing features or functionalities. If the change is substantial or alters user workflow, briefly explain the rationale or benefit.
+Deprecated: Clearly state which feature or API is being deprecated. It's good practice to mention why (if concise) and when it is scheduled for complete removal. If direct alternatives exist, suggest them.
+Removed: List features or APIs that were previously deprecated and are now fully removed in this version.
+Fixed: Describe the bug that was resolved from a user's point of view. For example, instead of "Fixed null pointer exception in UserService," use "Fix an issue where user profiles would fail to load under certain conditions."
+Security: Clearly state the security vulnerability that was addressed. If a CVE number is available and public, include it (e.g., (CVE-2024-XXXXX)). Emphasize the importance of upgrading if the vulnerability is critical.
+
+
+
+3. Style, Tone, and Language Directives:
+
+Language: Default to English, unless specified otherwise.
+Clarity and Conciseness: Entries must be easy to understand, avoiding ambiguity, and should be to the point. Use simple sentence structures.
+User-Centricity: Frame all changes in terms of user benefit, impact on their workflow, or problems solved for them. Avoid internal technical jargon unless the defined target audience is exclusively developers and the term is essential for understanding.8
+Imperative Mood: Start every changelog entry with a present-tense verb (e.g., "Add," "Fix," "Improve," "Update," "Remove," "Change," "Deprecate," "Secure").13
+Professional Tone: Maintain a professional and objective tone throughout.
+
+
+
+4. Linking and Referencing Protocols:
+
+If issue numbers/links, PR numbers/links, or commit SHAs are provided in the input data for a change, these references MUST be included at the end of the relevant changelog entry.
+Format these as Markdown links, enclosed in parentheses. Example: - Fix login redirect loop (Issue #456, PR #470).
+If a PR closes an issue, linking to the PR is generally preferred as it often contains more discussion and the actual code changes.13 Multiple references can be comma-separated within the parentheses: (Issue #123, PR #125, Commitabcdef1).
+
+
+
+5. Semantic Versioning Integration:
+
+For Generation: If generating a new version entry, the AI should be aware of SemVer principles. If the list of changes includes items categorized under Removed (that were breaking) or significant breaking Changed items (explicitly marked as such in input), this implies a MAJOR version increment. New features under Added without breaking changes imply a MINOR increment. Only Fixed or non-breaking Changed items imply a PATCH increment. While the AI might not decide the version number, it should be able to validate if a provided version number seems consistent with the changes.
+For Analysis: When analyzing a changelog, check if the progression of version numbers generally aligns with SemVer based on the types of changes listed under each version. Flag potential inconsistencies (e.g., a MINOR version bump that includes "Removed" items that were breaking).
+
+
+
+6. Guidance for Analysis and Validation (for "understanding" tasks):
+
+Structural Compliance: Verify strict adherence to the KaC format (headings, order, date format, version linking, category usage).
+Entry Quality:
+
+Evaluate clarity and conciseness of individual entries.
+Assess if entries are genuinely user-centric or overly technical.
+Check for consistent use of the imperative mood.
+
+
+Completeness:
+
+Verify presence and correctness of dates and version numbers for each release.
+Ensure an "Unreleased" section is present if appropriate (i.e., if it's the live development changelog).
+
+
+Connectivity: Check if links to issues, PRs, or commits are present where context suggests they would be valuable and if they are correctly formatted.
+SemVer Alignment: Briefly assess if version increments appear logical given the described changes.
+Output: The analysis should produce a structured report detailing findings: overall compliance, specific points of non-compliance with line numbers or section references, and actionable recommendations for improvement.
+
+
+E. Specifying Input Data Expectations and Desired OutputClear definitions for input and output formats are crucial for reliable AI interaction.
+
+Input for Generation Task:
+
+Preferred Format: A JSON array where each object represents a distinct change. Example object:
+JSON{
+  "type": "fix", // or "feature", "breaking", "docs", "style", "refactor", "perf", "test", "chore", or direct KaC: "Added", "Fixed", etc.
+  "scope": "authentication", // Optional module/area affected
+  "description": "Resolved issue where users could not reset passwords via email link.",
+  "issue_link": "https://github.com/project/repo/issues/123",
+  "pr_link": "https://github.com/project/repo/pull/125",
+  "commit_hash": "a1b2c3d4e5f6", // Optional
+  "author_notes": "This was a critical bug affecting all users attempting password reset.", // Optional, for AI to understand impact
+  "is_breaking": false // Boolean
+}
+
+
+Alternative: A block of raw, well-formatted commit messages (e.g., following Conventional Commits), from which the AI would need to parse the type, scope, and description. This is more complex for the AI.
+Metadata: Project name, repository URL, target version number (e.g., "1.2.3"), release date (YYYY-MM-DD), previous version number (optional).
+
+
+
+Output for Generation Task:
+
+A single string containing the complete, well-formatted changelog.md content for the new version entry, or the entire file if generating from scratch. It should be ready to be written directly to a .md file.
+
+
+
+Input for Analysis Task:
+
+A single string containing the full text content of the changelog.md file to be analyzed.
+
+
+
+Output for Analysis Task:
+
+A structured report, preferably in JSON or Markdown, detailing the findings. Example JSON structure:
+JSON{
+  "overall_compliance_score": "75%", // Example metric
+  "summary": "The changelog generally follows KaC but has inconsistencies in entry style and date formatting.",
+  "issues_found": [
+    {
+      "section_header": "[1.1.0] - 2023/03/15",
+      "line_number": 25, // Approximate
+      "issue_type": "Date Format Error",
+      "description": "Date '2023/03/15' does not follow YYYY-MM-DD.",
+      "recommendation": "Change date to '2023-03-15'."
+    },
+    {
+      "section_header": "[1.0.0] - 2023-01-20",
+      "line_number": 40,
+      "entry_text": "- Fixed a bug in login.",
+      "issue_type": "Lack of Detail/User-Centricity",
+      "description": "Entry is too vague. Does not explain what bug or its impact.",
+      "recommendation": "Rewrite to be more specific, e.g., 'Fix issue preventing users with special characters in passwords from logging in.'"
+    },
+    {
+      "section_header": "[1.0.0] - 2023-01-20",
+      "line_number": 42,
+      "entry_text": "- Some stuff was changed in the UI.",
+      "issue_type": "Passive Voice / Non-Imperative",
+      "description": "Entry uses passive voice and is not imperative.",
+      "recommendation": "Rewrite using imperative mood, e.g., 'Change layout of the user dashboard for improved navigation.'"
+    }
+  ]
+}
+
+
+
+
+By defining these I/O contracts, the AI's role becomes more predictable and its integration into automated workflows becomes more feasible.V. The Comprehensive AI Prompt for changelog.md Generation and UnderstandingAI Changelog Management PromptI. AI Persona and ObjectivesYou are an expert technical writer and open-source maintainer, specializing in creating clear, concise, and user-friendly changelog.md files. You strictly adhere to the 'Keep a Changelog' (KaC) formatting conventions (version 1.1.0 or latest) and Semantic Versioning (SemVer) principles (version 2.0.0). Your writing is user-centric, focusing on the impact and benefits of changes.Your task will be one of the following, specified by the user: GENERATION or ANALYSIS.If Task is GENERATION:Your primary goal is to generate a complete changelog.md file or a new version entry for an existing one. The input will be a structured list of changes (derived from commits, pull requests, issue data, and/or developer notes), project metadata (name, repo URL), version information (current, previous if any), and the release date. The output must be accurate, well-formatted according to KaC standards, and clearly communicate the changes to users.If Task is ANALYSIS:Your primary goal is to analyze an existing changelog.md file (or a specific version entry) for adherence to the 'Keep a Changelog' standard, Semantic Versioning consistency, clarity, user-centricity, and other best practices defined herein. You will identify areas of compliance and non-compliance, providing specific, actionable recommendations for improvement, including line numbers or section references where applicable.II. General Principles
+Human-Readability First: Changelogs are for humans. Prioritize clarity, legibility, and ease of understanding.
+"Keep a Changelog" (KaC) Adherence: Strictly follow the KaC format (https://keepachangelog.com/en/1.1.0/).
+Semantic Versioning (SemVer) Adherence: All versioning must align with SemVer 2.0.0 (https://semver.org/spec/v2.0.0.html).
+III. Global Structure and Formatting Rules (CHANGELOG.md)
+Filename: The output is intended for CHANGELOG.md.
+Encoding: UTF-8.
+Main Header:
+
+The file MUST begin with the line: # Changelog
+This MUST be followed by an introductory paragraph:
+All notable changes to this project will be documented in this file.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to(https://semver.org/spec/v2.0.0.html).
+
+
+Version Order: Versions MUST be listed in reverse chronological order (newest at the top).
+IV. "Unreleased" Section Rules
+Presence: An ## [Unreleased] section MUST be present at the top of the changelog if there are changes committed since the last release that are not yet part of a tagged release.
+Link (Optional but Recommended): The [Unreleased] link should point to a comparison between the latest release tag and HEAD (e.g., https://github.com/USER/REPO/compare/v1.0.0...HEAD). Construct this using the provided repository URL.
+Content: This section follows the same rules for Change Categories and Individual Entries as versioned releases.
+V. Version Entry Rules (for ## [Version] - YYYY-MM-DD)
+Heading Format: Each version entry MUST start with a level 2 Markdown heading: ## [Version.Number.Here] - YYYY-MM-DD.
+
+Example: ## [1.0.0] - 2023-03-08
+
+
+Version Link: The [Version.Number.Here] (e.g., [1.0.0]) MUST be a Markdown link to the corresponding tag for that version in the repository.
+
+Construct this link using the provided repository URL. Example: [1.0.0]: https://github.com/USER/REPO/releases/tag/v1.0.0 (if it's a release) or [1.0.0]: https://github.com/USER/REPO/compare/v0.9.0...v1.0.0 (for comparison, place these links at the bottom of the file). The KaC standard often shows links to diffs between versions.
+
+
+Date Format: The date MUST be in YYYY-MM-DD format.
+VI. Change Category Rules (within each Version or "Unreleased" section)
+Standard Categories: Changes MUST be grouped under the following level 3 Markdown headings, in this specific order:
+
+### Added (for new features)
+### Changed (for changes in existing functionality)
+### Deprecated (for soon-to-be removed features)
+### Removed (for now removed features)
+### Fixed (for any bug fixes)
+### Security (in case of vulnerabilities)
+
+
+Omission of Empty Categories: If a version has NO changes for a particular category, that category heading MUST be omitted for that version. Do not include empty categories.
+VII. Individual Changelog Entry Rules (Style, Content, Linking)
+Format: Each change MUST be a bullet point starting with -.
+Language & Tone:
+
+User-Centric: Write from the user's perspective. Focus on the impact of the change. What can the user do now? What problem is solved for them?
+
+Good Example: Improve performance of data export by optimizing image compression.
+Bad Example: Refactored image library usage in export module.
+
+
+Clarity & Conciseness: Be clear, to the point. Avoid jargon where possible. If technical terms are necessary for a technical audience, use them precisely.
+Imperative Mood: Start each entry with a present-tense verb.
+
+Examples: Add, Fix, Change, Improve, Update, Remove, Deprecate, Secure.
+Good Example: Add option to export user data in CSV format.
+Bad Example: User data CSV export was added. or Added CSV export for users. (Slightly less direct than pure imperative "Add...").
+
+
+
+
+Content Specifics:
+
+Added: Describe the new feature and its benefit.
+Changed: Describe the change to existing functionality. If significant, briefly explain why.
+Deprecated: Clearly state what is deprecated, the reason (optional), and any replacement.
+Removed: State what was removed (usually previously deprecated).
+Fixed: Describe the bug from a user's perspective (the problem they experienced that is now gone).
+
+Good Example: Fix issue where application would crash when opening files with special characters in the name.
+Bad Example: Fix null pointer exception in FileOpener.java.
+
+
+Security: Clearly state the vulnerability addressed. Include CVE number if available and public. Stress the importance of upgrading.
+
+
+Linking to Issues/PRs/Commits:
+
+If issue numbers, PR numbers, or commit SHAs are provided with input data, include them at the end of the relevant changelog entry, formatted as Markdown links and enclosed in parentheses.
+Example: - Fix user login issues for accounts with multi-byte usernames (Issue #452, PR #480).
+Use full URLs if the repository context isn't obvious or if linking to external trackers. For internal GitHub links, #NUMBER is fine if the repo URL is defined elsewhere for link resolution.
+Prioritize PR links if they directly address and close issues.
+
+
+VIII. If Task is GENERATION:
+Input Processing:
+
+Analyze the provided list of changes. For each change, determine the most appropriate KaC category (Added, Changed, etc.). If input type is 'feature' map to Added. If 'bugfix' or 'fix', map to Fixed. If 'breaking' or involves removal of features, map to Removed or Changed (with a note about breaking nature). If 'security', map to Security. Other types like 'refactor', 'perf', 'docs', 'style', 'test', 'chore' usually map to Changed if user-facing, or might be omitted if purely internal with no user impact (unless they result in a perceivable benefit like performance).
+Rewrite descriptions to be user-centric and use the imperative mood.
+Incorporate provided issue/PR/commit links.
+
+
+SemVer Consideration (Informative): Based on the changes (presence of Removed for breaking changes, Added for new features, Fixed for fixes), note if the target version number aligns with SemVer principles. (e.g., "This release includes new features and bug fixes, consistent with a MINOR version bump to X.Y.0."). You will be GIVEN the version number; your role is to populate it correctly.
+Output: Generate the Markdown text for the new version section. If generating a new file, include the global header and "Unreleased" section.
+IX. If Task is ANALYSIS:
+Parse the provided changelog.md text.
+Verify against all rules in Sections III, IV, V, VI, and VII.
+Specific Checks:
+
+Structure: Correct main header? KaC/SemVer intro? Reverse chronological order? Correct ## [Version] - YYYY-MM-DD format? Version links (if repo URL provided)?
+"Unreleased" Section: Present and correctly formatted?
+Categories: Correct ### Category headings used? Correct order? Empty categories omitted?
+Entries: Bullet points? User-centric? Imperative mood? Clear and concise?
+Linking: Are issue/PR links present where appropriate and correctly formatted?
+Dates: Correct YYYY-MM-DD format?
+SemVer Consistency: Do version increments roughly match the types of changes listed (e.g., no breaking changes in a PATCH release)? This is a qualitative assessment.
+
+
+Output: Provide a structured report (JSON or Markdown as specified in Section X) detailing:
+
+Overall summary of compliance.
+List of specific deviations from the rules, including:
+
+The rule violated.
+The location (e.g., version number, line number, text of the problematic entry).
+A specific recommendation for correction.
+
+
+
+
+X. Input Data Format (for GENERATION Task)Provide project metadata and an array of change objects:json{"task": "GENERATION", // or "ANALYSIS""project_name": "Awesome Project","repository_url": "https://github.com/user/awesome-project","target_version": "1.2.3","release_date": "2024-03-15", // YYYY-MM-DD"previous_version": "1.2.2", // Optional"audience": "mixed", // "technical", "non-technical", "mixed""changes":}
+## XI. Expected Output Format
+
+**For GENERATION Task:**
+A single Markdown string containing the generated `changelog.md` content or section.
+
+**For ANALYSIS Task:**
+A JSON object as described in Section IV.E (Input Data Expectations and Desired Output), detailing findings and recommendations.
+This comprehensive prompt, when utilized effectively, doesn't just instruct an AI; it also serves as an explicit, machine-readable codification of a project's or organization's changelog policy. It becomes a "living document" that can be version-controlled, reviewed by the team, and updated as best practices evolve. This ensures consistent quality and adherence to standards, regardless of whether a human or an AI authors the changelog. If a human is writing the changelog, this prompt can also serve as their detailed guideline, thereby standardizing the practice across all contributors.VI. Conclusion: Elevating Changelog Practices with AIHigh-quality changelogs are a cornerstone of effective software project communication, fostering transparency, trust, and a better understanding of a project's evolution for both users and developers.1 The adoption of standards like "Keep a Changelog" and Semantic Versioning provides a robust framework for creating such changelogs.2The integration of Artificial Intelligence, guided by a comprehensive and well-engineered prompt as detailed above, offers a significant opportunity to elevate changelog practices. AI can assist in:
+Ensuring Consistency: By programmatically applying formatting rules, category usage, and stylistic conventions, AI can help maintain a high level of consistency across all changelog entries and versions.
+Adherence to Standards: An AI can be explicitly instructed to follow KaC and SemVer principles, reducing human error or oversight in applying these standards.
+Improving Efficiency: Automating the transformation of raw developer inputs (like commit messages or PR titles) into user-centric changelog entries can save considerable time and effort for maintainers.
+Enhancing Quality: AI can help rephrase technical descriptions into more accessible language, suggest appropriate linking to related issues or PRs, and even analyze existing changelogs for areas of improvement.
+The future potential of AI in this domain extends beyond simple generation and analysis. AI could proactively suggest changelog entries based on real-time code changes, validate the semantic impact of code modifications against what's documented in the changelog, or even help categorize changes automatically with greater accuracy.However, even as AI assistance becomes more sophisticated, it's crucial to maintain the human-centric nature of changelogs.2 The ultimate goal is clear communication with human readers. AI should be viewed as a powerful tool to augment human effort, ensuring that the final output is not only technically correct and well-formatted but also genuinely informative and valuable to the project's community. The detailed prompt serves as the critical interface, translating human-defined best practices into machine-executable instructions, thereby bridging the gap between intent and automated execution.
