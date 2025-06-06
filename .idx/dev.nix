@@ -1,22 +1,18 @@
 { pkgs, ... }:
-
-let
-  # Define the pinned version of ContextVibes CLI here for easy updating
-  contextVibesVersion = "v0.1.1";
-in
 {
-  channel = "stable-24.11";
+  channel = "stable-25.05";
+  
+  packages = with pkgs; [
+    # --- Core Development & Workflow ---
+    go
+    gotools
+    git # Version control system
 
-  packages = [
-    pkgs.go
-    pkgs.gotools
-    pkgs.golangci-lint
-    pkgs.git
-    pkgs.gh
-    pkgs.tree
-    pkgs.jq
-    pkgs.nodejs # Added for markdownlint-cli and general node tooling
-    pkgs.nodePackages.markdownlint-cli # Added for Markdown linting
+    # --- Utilities --
+    gh
+    tree # Directory structure viewer
+    nodejs # Added for markdownlint-cli and general node tooling
+    nodePackages.markdownlint-cli
   ];
 
   env = {
@@ -32,35 +28,36 @@ in
 
     workspace = {
       onCreate = {
+        # Script to install contextvibes CLI into ./bin
         installContextVibesCli = ''
-          echo "Attempting to install ContextVibes CLI (@${contextVibesVersion}) into ./bin ..."
-          
-          if ! go version > /dev/null 2>&1; then
-              echo "ERROR: Go command not found or not working. Cannot install ContextVibes CLI."
-              echo "Please ensure 'pkgs.go' is correctly configured in dev.nix."
-              exit 1; 
-          fi
+          echo "Attempting to install contextvibes CLI into ./bin ..."
 
-          LOCAL_BIN_DIR="$(pwd)/bin"
-          mkdir -p "$LOCAL_BIN_DIR"
-          
-          echo "Target directory for contextvibes: $LOCAL_BIN_DIR"
-          echo "Attempting to install: github.com/contextvibes/cli/cmd/contextvibes@${contextVibesVersion}"
-
-          if GOBIN="$LOCAL_BIN_DIR" go install "github.com/contextvibes/cli/cmd/contextvibes@${contextVibesVersion}"; then
-            echo "Successfully installed contextvibes@${contextVibesVersion} to $LOCAL_BIN_DIR/contextvibes"
-            if [ -f "$LOCAL_BIN_DIR/contextvibes" ]; then
-              chmod +x "$LOCAL_BIN_DIR/contextvibes" || echo "Warning: chmod +x on contextvibes failed."
-            else
-              echo "ERROR: contextvibes binary not found at $LOCAL_BIN_DIR/contextvibes after successful 'go install' message."
-            fi
+          if ! command -v go &> /dev/null
+          then
+              echo "Go command could not be found, skipping contextvibes installation."
+              # Exit gracefully or 'exit 1' if critical
+              # For now, we'll assume Go is present due to pkgs.go
           else
-            echo "ERROR: Failed to install contextvibes@${contextVibesVersion}."
-            echo "Please check Go environment, network connectivity, and the specified CLI version."
+            LOCAL_BIN_DIR="$(pwd)/bin"
+            mkdir -p "$LOCAL_BIN_DIR"
+            echo "Target directory for contextvibes: $LOCAL_BIN_DIR"
+
+            export GOBIN="$LOCAL_BIN_DIR"
+            echo "Running: GOBIN=$GOBIN go install github.com/contextvibes/cli/cmd/contextvibes@latest"
+
+            if go install github.com/contextvibes/cli/cmd/contextvibes@latest; then
+              echo "Successfully installed contextvibes to $LOCAL_BIN_DIR/contextvibes"
+              echo "You can run it using: $LOCAL_BIN_DIR/contextvibes"
+              echo "Consider adding '$LOCAL_BIN_DIR' to your PATH for convenience (see README)."
+              chmod +x "$LOCAL_BIN_DIR/contextvibes" || echo "Note: chmod +x on contextvibes failed."
+            else
+              echo "ERROR: Failed to install contextvibes."
+            fi
+            unset GOBIN
           fi
         '';
       };
-      
+
       onStart = {
         checkContextVibes = ''
           echo "Checking for ContextVibes CLI in ./bin ..."
@@ -83,7 +80,7 @@ in
     };
 
     previews = {
-      enable = false; 
+      enable = false;
     };
   };
 }

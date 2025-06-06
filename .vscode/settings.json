@@ -12,14 +12,25 @@
     "editor.letterSpacing": 0,
     "debug.console.fontSize": 13,
     "window.commandCenter": false,
-    "workbench.preferredDarkColorTheme": "Tomorrow Night Blue",
-    "workbench.preferredLightColorTheme": "Monospace Light",
-    "workbench.iconTheme": "monospace",
     "window.autoDetectColorScheme": true,
-    "workbench.layoutControl.enabled": false,
     "inlineChat.mode": "preview",
+
     "git.enableSmartCommit": true,
     "git.autofetch": true,
+
+    "editor.wordWrap": "on",
+
+    "files.watcherExclude": {
+        "**/.cache/**": true,
+        "**/.git/**": true,
+        "**/node_modules/**": true
+    },
+    "go.useLanguageServer": true,
+
     "workbench.activityBar.location": "top",
-    "editor.wordWrap": "on"
+    "workbench.colorTheme": "Monokai",
+    "workbench.iconTheme": "vs-seti",
+    "workbench.layoutControl.enabled": false,
+    "workbench.preferredDarkColorTheme": "Tomorrow Night Blue",
+    "workbench.preferredLightColorTheme": "Monospace Light",
 }
