@@ -51,7 +51,7 @@ We welcome various types of contributions, including direct improvements to THEA
 3.  **Prepare a Draft (If Applicable):**
     *   For documentation changes, you can prepare a draft or specific suggestions.
     *   For new THEA artifacts (prompts, heuristics), a clear outline or a prototype adhering to existing schemas (see `thea/schemas/`) is highly beneficial.
-    *   For "Lessons Learned" that result in new documents (e.g., a new tooling example in `playbooks/tooling_examples/`), draft that document.
+    *   For "Lessons Learned" that result in new documents (e.g., a new tooling example in `playbooks/tooling_examples/`), draft that document. **If you are collaborating with the THEA Collective AI to draft such documents, please refer to the '[Playbook: Capturing Lessons Learned with AI Collaboration (User-Mediated Document Flow)](../playbooks/process_guidance/capturing_lessons_with_ai_via_documents.md)' for the recommended workflow.**
 4.  **Integration into the Product Backlog:**
     *   `Orion`, as Product Owner, will review new issues with `Athena`.
     *   Accepted proposals will be formulated as Product Backlog Items (PBIs) and prioritized.
