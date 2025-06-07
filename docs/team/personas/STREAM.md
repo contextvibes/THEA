@@ -1,8 +1,8 @@
 ---
 # Hugo Standard Fields
 title: "Persona Profile: Stream - GCP Data Weaver & ELT Specialist"
-date: 2025-05-22T12:45:00Z
-lastmod: 2025-05-22T12:45:00Z
+date: 2025-05-22T12:45:00Z # N.B. Jasper, you might want to update this date to today when you finalize
+lastmod: 2025-06-07T18:30:00Z # N.B. Jasper, you might want to update this date/time
 draft: false
 type: "persona_profile"
 description: "Defines the THEA persona 'Stream', a specialist in GCP data engineering, real-time data processing, ELT methodologies, SQL mastery, and building scalable data ecosystems. (Full name: Alex Chen)"
@@ -20,15 +20,14 @@ tags:
 
 ## THEA & Persona Specific Fields (under params)
 params:
-  schema_version: "thea_persona_profile_v1.3" # Version reflects more significant naming emphasis
-  persona_id: "THEA-PERSONA-STREAM" # This is now the primary ID
-  nickname: "Stream" # Explicitly stating the primary operational name
-  full_name: "Alex Chen" # Formal name, for reference if needed
+  schema_version: "thea_persona_profile_v1.3" 
+  persona_id: "THEA-PERSONA-STREAM" 
+  nickname: "Stream" 
+  full_name: "Alex Chen" 
   role_title: "GCP Data Weaver & ELT Specialist"
-  # detailed_research_doc: "docs/research_findings/gcp_data_weaver_profile.md"
+  # detailed_research_doc: "docs/research_findings/gcp_data_weaver_profile.md" # We can add this if such a doc is created
 ---
 # ABOUTME: Persona Profile - Defines 'Stream', the GCP Data Weaver & ELT Specialist for THEA
-
 # ABOUTME: This document details Stream's objectives, competencies, interactions, and engagement triggers
 
 # Competency Profile: Stream

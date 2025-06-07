@@ -1,0 +1,22 @@
+git:
+    defaultRemote: origin
+    defaultMainBranch: main
+logging:
+    defaultAILogFile: contextvibes_ai_trace.log
+validation:
+    branchName:
+        enable: true
+        pattern: ^((feature|fix|docs|format)/.+)$
+    commitMessage:
+        enable: true
+        pattern: ^(BREAKING|feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-zA-Z0-9\-_/]+\))?:\s.+
+projectState:
+    strategicKickoffCompleted: true
+    lastStrategicKickoffDate: "2025-06-07T18:14:34Z"
+ai:
+    collaborationPreferences:
+        codeProvisioningStyle: bash_cat_eof
+        markdownDocsStyle: raw_markdown
+        detailedTaskMode: mode_b
+        proactiveDetailLevel: detailed_explanations
+        aiProactivity: proactive_suggestions

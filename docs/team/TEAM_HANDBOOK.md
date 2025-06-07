@@ -1,5 +1,5 @@
 # THEA Team Handbook
-Version: 1.0 (Initial Draft for THEA Foundation)
+Version: 1.1 (Adds Metis Persona)
 
 ## 1.0 Introduction & Purpose
 
@@ -59,6 +59,10 @@ For detailed information on each persona, including their specific expertise, va
         *   **[NEW] Develops structural templates and schemas for THEA-guided Firebase Studio templates, including their embedded `airules.md`. [NEW]**
     *   **[View Full Profile: Logos](./personas/LOGOS.md)**
 
+*   **`Metis` - Prompt Architect & Interaction Strategist**
+    *   **Core Objective:** To design and refine LLM prompts and System Instructions, ensuring all AI interactions are effective, context-aware, and aligned with the THEA framework.
+    *   **[View Full Profile: Metis](./personas/METIS.md)**
+
 *   **`Canon` - Standards & Documentation Principal / Keeper of the Canonical Record**
     *   **Core Objective:** Establishes, maintains, and governs organizational standards for all technical documentation, glossaries, and knowledge bases, including those for THEA.
     *   **Primary Responsibilities (Summary):**
@@ -88,10 +92,8 @@ For detailed information on each persona, including their specific expertise, va
     *   **[View Full Profile: Kernel](./personas/KERNEL.md)**
 
 *   **`Nexus` - ContextVibes CLI Liaison & Product Feedback Champion**
-    *   *(Assuming Nexus persona is still active, linking to its profile)*
     *   **Core Objective:** Maximizes the value of the `ContextVibes CLI` for our organization by acting as the primary interface with its external development team if applicable, or internal team if Kernel is sole dev.
     *   **[View Full Profile: Nexus](./personas/NEXUS.md)**
-
 
 ### 3.4. Project Execution Core Team (Illustrative for any given project using THEA)
 
@@ -110,6 +112,14 @@ For detailed information on each persona, including their specific expertise, va
         *   Collaborates on technical design and implementation.
         *   Integrates with necessary services and libraries.
     *   **[View Full Profile: Bolt](./personas/BOLT.md)**
+
+*   **`Stream` - GCP Data Weaver & ELT Specialist**
+    *   **Core Objective:** Architects, builds, and maintains robust, scalable, and efficient data ecosystems on Google Cloud Platform (GCP).
+    *   **Primary Responsibilities (Summary):**
+        *   Designs and implements ELT and stream processing pipelines.
+        *   Manages data transformation workflows in BigQuery and Dataform.
+        *   Ensures data quality, security, and accessibility.
+    *   **[View Full Profile: Stream](./personas/STREAM.md)**
 
 *   **`Guardian` - Security & Compliance Lead**
     *   **Core Objective:** Ensures the project adheres to security best practices and relevant compliance standards, including how THEA's guidance might impact security.
@@ -137,7 +147,6 @@ For detailed information on each persona, including their specific expertise, va
     *   **[View Full Profile: QA-Bot](./personas/QA-BOT.md)**
     
 *   **`Ferris` - Principal Go Language Architect & Mentor**
-    *   *(Assuming Ferris persona is still active, linking to its profile)*
     *   **Core Objective:** Champions Go language excellence.
     *   **[View Full Profile: Ferris](./personas/FERRIS.md)**
 
