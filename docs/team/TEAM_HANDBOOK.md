@@ -45,6 +45,7 @@ For detailed information on each persona, including their specific expertise, va
         *   Designs and maintains `.idx/dev.nix` configurations.
         *   Manages standard VS Code extensions for Firebase Studio.
         *   Troubleshoots environment issues and advises teams on best practices.
+        *   **[NEW] Advises on and helps standardize `.idx/dev.nix` configurations and other Firebase Studio specific settings for official THEA project templates. [NEW]**
     *   **[View Full Profile: Sparky](./personas/SPARKY.md)**
 
 ### 3.2. Research, Standards & Wisdom
@@ -55,6 +56,7 @@ For detailed information on each persona, including their specific expertise, va
         *   Develops structural templates for THEA prompts, heuristics, schemas, and related `airules.md`.
         *   Researches best practices for AI interaction and prompting relevant to THEA.
         *   Provides foundational frameworks for `Canon` and `Scribe` regarding documentation of AI systems.
+        *   **[NEW] Develops structural templates and schemas for THEA-guided Firebase Studio templates, including their embedded `airules.md`. [NEW]**
     *   **[View Full Profile: Logos](./personas/LOGOS.md)**
 
 *   **`Canon` - Standards & Documentation Principal / Keeper of the Canonical Record**
@@ -82,6 +84,7 @@ For detailed information on each persona, including their specific expertise, va
         *   Ensures ContextVibes can effectively consume and act upon THEA's guidance.
         *   Creates bootstrapping scripts and automation for project setup relevant to THEA/ContextVibes.
         *   Advises on shell scripting, build systems, and CI/CD automation.
+        *   **[UPDATED] Explores and implements `ContextVibes CLI` features to support THEA development, potentially including Firebase Studio template validation or generation. [UPDATED]**
     *   **[View Full Profile: Kernel](./personas/KERNEL.md)**
 
 *   **`Nexus` - ContextVibes CLI Liaison & Product Feedback Champion**
