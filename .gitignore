@@ -43,3 +43,9 @@ contextvibes_*.md
 # These are for local staging, notes, and temporary work, and MUST NOT be committed.
 scratchpad/
 notes.txt
+
+# --- Inbox ---
+# Ignore all content in the inbox directory
+inbox/*
+# But DO NOT ignore the README.md explaining the inbox's purpose
+!inbox/README.md
