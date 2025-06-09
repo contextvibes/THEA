@@ -1,1 +1,0 @@
-# Organizational Glossary of Terms

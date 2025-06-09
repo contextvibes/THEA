@@ -25,7 +25,7 @@ We welcome various types of contributions, including direct improvements to THEA
     *   Sharing performance optimization techniques or debugging strategies relevant to AI-assisted development.
 *   **Tooling Insights & Feedback:**
     *   Sharing effective configurations for IDEs, linters, or other dev tools relevant to THEA contributors (e.g., for `.idx/dev.nix`).
-    *   Documenting useful scripts or automation snippets (to be added to `playbooks/tooling_examples/` or `scripts/`).
+    *   Documenting useful scripts or automation snippets (to be added to `thea/playbooks/tooling_examples/` or `scripts/`).
     *   Providing feedback for core tools like `ContextVibes CLI` (to be channeled through `Nexus`).
 *   **Process Improvements:**
     *   Suggesting refinements to our Scrum process for THEA development.
@@ -38,7 +38,7 @@ We welcome various types of contributions, including direct improvements to THEA
     *   Identifying gaps in existing THEA documentation.
     *   Proposing new templates, guides, or playbook entries.
 *   **Visual Documentation & Diagrams:**
-    *   Proposing or creating new diagrams to clarify THEA concepts or processes. Refer to the '[Playbook: Creating and Maintaining THEA Project Diagrams](playbooks/process_guidance/managing_thea_diagrams.md)' for tooling and storage conventions.
+    *   Proposing or creating new diagrams to clarify THEA concepts or processes. Refer to the '[Playbook: Creating and Maintaining THEA Project Diagrams](thea/playbooks/process_guidance/managing_thea_diagrams.md)' for tooling and storage conventions.
 *   **Bug Reports or Issues with THEA:** Identifying errors, inconsistencies, or areas where THEA's guidance is unclear or could be improved.
 
 ## 3. How to Propose a Contribution or Share a Lesson Learned
@@ -56,7 +56,7 @@ We welcome various types of contributions, including direct improvements to THEA
     *   For documentation changes, you can prepare a draft or specific suggestions.
     *   For new THEA artifacts (prompts, heuristics), a clear outline or a prototype adhering to existing schemas (see `thea/schemas/`) is highly beneficial.
     *   For new Firebase Studio Templates, a prototype of the template structure (including key files like `.idx/dev.nix`, the embedded `.idx/airules.md`, and any manifest) is highly beneficial. Ensure it aligns with guidance in `thea/firebase_studio_templates/PLAYBOOKS/designing_thea_aligned_firebase_templates.md`.
-    *   For "Lessons Learned" or other documentation that result in new documents (e.g., a new tooling example in `playbooks/tooling_examples/`, a new guide, a new playbook), draft that document. **If you are collaborating with the THEA Collective AI to draft such documents, please refer to the '[Playbook: Capturing Lessons Learned with AI Collaboration (User-Mediated Document Flow)](playbooks/process_guidance/capturing_lessons_with_ai_via_documents.md)' for the recommended workflow.**
+    *   For "Lessons Learned" or other documentation that result in new documents (e.g., a new tooling example in `thea/playbooks/tooling_examples/`, a new guide, a new playbook), draft that document. **If you are collaborating with the THEA Collective AI to draft such documents, please refer to the '[Playbook: Capturing Lessons Learned with AI Collaboration (User-Mediated Document Flow)](thea/playbooks/process_guidance/capturing_lessons_with_ai_via_documents.md)' for the recommended workflow.**
 4.  **Integration into the Product Backlog:**
     *   `Orion`, as Product Owner, will review new issues with `Athena`.
     *   Accepted proposals will be formulated as Product Backlog Items (PBIs) and prioritized.

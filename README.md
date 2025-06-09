@@ -1,27 +1,6 @@
----
-id: "doc:README"
-fileExtension: "md"
-title: "THEA (Tooling & Heuristics for Efficient AI-Development) - v0.1.0"
-artifactVersion: "0.1.0"
-status: "Active"
-summary: "The main entry point to the THEA project, providing an overview of its purpose, structure, core principles, and how to contribute."
-usageGuidance:
-  - "This is the first document to read when new to the project."
-  - "Use this file to understand the high-level goals and repository layout."
-owner: "Scribe, Canon"
-createdDate: "2025-05-20T10:00:00Z"
-lastModifiedDate: "2025-06-08T11:30:00Z"
-tags:
-  - "readme"
-  - "overview"
-  - "documentation"
-  - "thea-core"
-  - "entry-point"
-  - "guidance-system"
----
 # THEA (Tooling & Heuristics for Efficient AI-Development) - v0.1.0 (Foundational Setup)
 
-Welcome to THEA, an AI guidance system designed to enhance developer productivity by providing intelligent tooling and actionable heuristics. This repository is the central hub for THEA's core guidance artifacts (prompts, heuristic rules, schemas), its supporting documentation, and the research that informs its intelligence.
+Welcome to THEA, an AI guidance system designed to enhance developer productivity by providing intelligent tooling and actionable heuristics. This repository is the central hub for THEA's core guidance artifacts, its supporting documentation, and the research that informs its intelligence.
 
 THEA's guidance is consumed by **ContextVibes** (a separate system) to provide AI-assisted development features directly within the developer's environment.
 
@@ -39,45 +18,47 @@ THEA aims to:
 
 Conceptually, the workflow is as follows:
 
-1. **THEA Defines:** This repository contains THEA's "intelligence" – structured prompts, heuristic rules, and schemas.
+1. **THEA Defines:** The core guidance (prompts, schemas, heuristics, playbooks, core docs, research) is defined within the `thea/` directory of this repository.
 2. **ContextVibes Consumes:** The ContextVibes engine (in its separate repository) is designed to fetch, parse, and interpret THEA's guidance artifacts.
 3. **Developers Interact:** Developers using an IDE integrated with ContextVibes receive AI-powered suggestions, code generation, and analysis, all shaped by THEA's underlying guidance.
 4. **Iterative Improvement:** THEA's guidance is designed to be versioned and improved over time based on feedback and new research.
 
-For more details on specific integrations, refer to the ContextVibes documentation and guides within this repository's `docs/` section.
+For more details on specific integrations, refer to the ContextVibes documentation and guides within `thea/integrations/` or `thea/application-guides/`.
 
 ## 3. Navigating This Repository
 
 Key components are organized as follows:
 
-* **`thea/`**: The core of THEA. Contains the actual guidance artifacts:
-  * `prompts/`: Standardized prompt templates for various coding tasks and languages.
-  * `heuristics/`: Actionable heuristic rules that can trigger analysis or suggestions.
-  * `schemas/`: Definitions for the structure of prompts and heuristics, ensuring consistency.
-* `thea/firebase_studio_templates/`: Contains schemas, playbooks, examples, and `airules.md` templates specifically for guiding the development of Firebase Studio project templates.
-* **`docs/`**: All project documentation for THEA, including:
-  * User guides on understanding and leveraging THEA's guidance.
-  * Architectural overviews of THEA.
-  * Ethical guidelines for THEA's development and use.
-  * (Link to Team Handbook & Personas, e.g., `docs/team/team-handbook.md`)
-  * `docs/assets/images/`: Storage for diagrams and other visual assets used in documentation.
-* **`research/`**: Research findings, papers, and experimental results that inform the design of THEA's prompts and heuristics. (Curated by @Logos)
-* **`playbooks/`**: Processes, templates, and best practices for *creating and contributing to* THEA's guidance artifacts.
-  * `playbooks/process_guidance/`: Contains playbooks related to THEA's development processes and standards.
-* **`scripts/`**: Utility scripts for managing or validating THEA's artifacts (e.g., `scripts/dev_utils.sh`). *(Note: These may be deprecated/removed as functionality moves to ContextVibes CLI)*
-* **`.idx/`**: Firebase Studio configuration tailored for contributors working on THEA's artifacts (e.g., `airules.md` for AI assistance *during* THEA development, `dev.nix`).
-* **`.github/`**: GitHub specific files, including issue templates, PR templates (`CONTRIBUTING.MD` is also here).
+*   **`thea/`**: **The heart of the THEA Framework.** This directory contains all core distributable assets:
+    *   `foundations/`: Core concepts, base schemas, foundational research, methodologies, and the THEA team model.
+    *   `building-blocks/`: Atomic, reusable assets like prompts, heuristics, meta-prompts, and artifact-specific schemas.
+    *   `application-guides/`: Playbooks, rulesets, user guides, and manuals on how to apply THEA.
+    *   `integrations/`: Assets and documentation for integrating THEA with specific tools, like Firebase Studio templates (under `firebase-studio/`).
+    *   `README.md`: Provides a detailed map and overview of the contents within the `thea/` directory.
+    *   `thea-manifest.json`: A machine-readable index of THEA artifacts, generated by `contextvibes index`.
+*   **`docs/`**: Contains documentation *about the development and maintenance of this THEA framework project itself*.
+    *   `contributor-guides/`: Guides for contributing to *this* repository.
+    *   `lessons_learned_sessions/`: Internal reflections on the THEA development process.
+    *   `process/`: Definitions of THEA's internal development processes (e.g., `agile-framework-development.md`).
+    *   `product_backlog/`: Detailed specifications for PBIs related to THEA's development.
+    *   `research_findings/`: Archived research briefs that *informed* THEA's creation (distinct from consumable research in `thea/foundations/research-papers/`).
+    *   `team_resources/`: Resources for the THEA development team.
+*   **`scripts/`**: Utility scripts for managing or validating THEA's artifacts or this repository (e.g., `scripts/dev_utils.sh`, scripts for batch renames). *(Note: Some may be deprecated/removed as functionality moves to ContextVibes CLI or is no longer needed.)*
+*   **`.idx/`**: Firebase Studio configuration tailored for contributors working on THEA itself (e.g., this project's `airules.md`, `dev.nix`).
+*   **`.github/`**: GitHub specific files, including issue templates, PR templates, and `CONTRIBUTING.MD`.
+*   **Root Files:** `README.MD` (this file), `CHANGELOG.MD`, `LICENSE`, `.gitignore`, `.markdownlint.jsonc`, `.contextvibes.yaml`.
 
 ## 4. Contributing to THEA
 
 THEA is an evolving system, and contributions are welcome! Whether it's suggesting new prompts, refining heuristics, improving documentation, or sharing research, your input is valuable.
 
-Please see `CONTRIBUTING.MD` (in the `.github/` directory) for detailed guidelines on how to contribute. THEA's development follows agile principles, and we adhere to the "Think Big, Start Small, Learn Fast" philosophy.
+Please see `.github/CONTRIBUTING.MD` for detailed guidelines on how to contribute to this framework. THEA's development follows agile principles, and we adhere to the "Think Big, Start Small, Learn Fast" philosophy.
 
 ## 5. Core Principles
 
-* **Think Big, Start Small, Learn Fast:** We embrace ambitious goals while prioritizing iterative development and rapid learning.
-* *(Other core principles can be added here or linked to a dedicated document)*
+*   **Think Big, Start Small, Learn Fast:** We embrace ambitious goals while prioritizing iterative development and rapid learning.
+*   **Be Kind:** All interactions and contributions should align with our core operating principle of kindness and respectful collaboration.
+*   *(Other core principles can be added here or linked to a dedicated document, likely within `thea/foundations/concepts/`)*
 
 ---
 *This THEA README is managed by @Scribe and @Canon, with strategic guidance from @Orion and @Athena. Technical review for ContextVibes integration by @Kernel.*
@@ -86,15 +67,15 @@ Please see `CONTRIBUTING.MD` (in the `.github/` directory) for detailed guidelin
 
 This framework is a living entity. We are committed to continuous improvement by:
 
-* Systematically capturing lessons learned during project execution and framework development.
-* Feeding valuable insights back into THEA's guidance, our playbooks, and overall processes.
-* Fostering a culture where knowledge sharing drives our evolution.
+*   Systematically capturing lessons learned during project execution and framework development (see `docs/lessons_learned_sessions/` and `docs/process/agile-framework-development.md`).
+*   Feeding valuable insights back into THEA's guidance (within `thea/`), our development playbooks (within `thea/application-guides/playbooks/process_guidance/` or `docs/process/`), and overall processes.
+*   Fostering a culture where knowledge sharing drives our evolution.
 
-The THEA ecosystem, encompassing the THEA guidance system, Firebase Studio Templates, and the ContextVibes CLI, is designed for such continuous, iterative improvement. The development and use of these components are interconnected in a virtuous cycle, driven by developer experience and feedback:
+The THEA ecosystem, encompassing the THEA guidance system (in `thea/`), Firebase Studio Templates (defined in `thea/integrations/firebase-studio/`), and the ContextVibes CLI, is designed for such continuous, iterative improvement. The development and use of these components are interconnected in a virtuous cycle, driven by developer experience and feedback:
 
-![THEA Continuous Improvement Cycle](docs/assets/images/thea-continuous_improvement_cycle.svg)
-*(Process for creating and maintaining diagrams: [Playbook: Creating and Maintaining THEA Project Diagrams](playbooks/process_guidance/managing_project_diagrams.md))*
+![THEA Continuous Improvement Cycle](thea/foundations/assets/images/thea-continuous-improvement-cycle.svg)
+*(Process for creating and maintaining diagrams: [Playbook: Creating and Maintaining THEA Project Diagrams](thea/application-guides/playbooks/process_guidance/managing-project-diagrams.md))*
 
 This cycle ensures that practical needs identified during template development and usage feed back into enhancing both our core tooling (`ContextVibes CLI`) and our foundational guidance (`THEA`), leading to progressively more powerful and efficient development workflows.
 
-*(Refer to `docs/process/AGILE_FRAMEWORK_DEVELOPMENT.MD` and `CONTRIBUTING.MD` for more on how insights are captured and integrated.)*
+*(Refer to `docs/process/agile-framework-development.md` and `.github/CONTRIBUTING.MD` for more on how insights are captured and integrated.)*
