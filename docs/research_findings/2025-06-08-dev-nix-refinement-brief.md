@@ -323,7 +323,7 @@ Maintaining the quality and correctness of dev.nix files is essential for ensuri
     YAML  
     \#.pre-commit-config.yaml  
     repos:  
-    \- repo: https://github.com/kamadorueda/alejandra  
+    \- repo: <https://github.com/kamadorueda/alejandra>  
       rev: vX.Y.Z \# Pin to a specific version of alejandra  
       hooks:  
         \- id: alejandra  
@@ -335,7 +335,7 @@ Maintaining the quality and correctness of dev.nix files is essential for ensuri
         \- id: deadnix  
           args: \["--fail"\] \# Fail if dead code is found  
           files: \\.nix$  
-    \- repo: https://github.com/nerdypepper/statix \# Or oppiliappan/statix depending on preferred fork  
+    \- repo: <https://github.com/nerdypepper/statix> \# Or oppiliappan/statix depending on preferred fork  
       rev: vX.Y.Z \# Pin to a specific version of statix  
       hooks:  
         \- id: statix  

@@ -12,7 +12,7 @@ We must immediately correct the two documents we just created to reflect this su
 
 This guide is now incorrect. We need to completely reverse its recommendation for `onCreate`.
 
-*   **Action:** Please replace the content of **`docs/contributor-guides/managing-lifecycle-hooks.md`** with this new, corrected version.
+* **Action:** Please replace the content of **`docs/contributor-guides/managing-lifecycle-hooks.md`** with this new, corrected version.
 
 ```
 ---
@@ -83,6 +83,7 @@ workspace = {
 For logic in `onStart` or for other common tasks that developers might need to run manually, using external scripts from a `scripts/` directory is still a valid and recommended pattern. These scripts are not part of the critical initial bootstrap and can be invoked by name.
 
 **Example:**
+
 ```nix
 # ... inside your dev.nix
 workspace = {
@@ -95,7 +96,7 @@ workspace = {
 
 ## 4. Summary of Policy
 
-- **`onCreate` hooks:** Use **inline, self-contained scripts** for critical, one-time setup.
-- **`onStart` hooks & common tasks:** Use **external scripts** from the `scripts/` directory for reusable and non-critical logic.
+* **`onCreate` hooks:** Use **inline, self-contained scripts** for critical, one-time setup.
+* **`onStart` hooks & common tasks:** Use **external scripts** from the `scripts/` directory for reusable and non-critical logic.
 
 This dual approach provides robustness for initial setup while offering maintainability for routine tasks.

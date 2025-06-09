@@ -82,7 +82,7 @@ This systematic approach ensures that developers can confidently identify and sp
 
 | Step | Action | Key Detail / Tool |
 | :---- | :---- | :---- |
-| 1 | **Visit the Official Search Portal** | Go to https://search.nixos.org/packages.1 |
+| 1 | **Visit the Official Search Portal** | Go to <https://search.nixos.org/packages.1> |
 | 2 | **Enter Search Term** | Use the common name of the tool (e.g., "git", "python", "nodejs"). |
 | 3 | **Analyze Results** | Look for the package that matches the desired tool and version. |
 | 4 | **Identify Attribute Name** | The primary name listed is typically the attribute. Note versioned names (e.g., python311, nodejs\_22). For ecosystem packages, note the prefix (e.g., nodePackages.some-npm-tool). |
@@ -142,8 +142,8 @@ Nix
 \# This is the universal THEA foundational template for Firebase Studio projects.  
 \# It defines the development environment using Nix.  
 \# Documentation:  
-\# \- Firebase Studio dev.nix reference: https://firebase.google.com/docs/studio/devnix-reference  
-\# \- Nixpkgs search: https://search.nixos.org/packages
+\# \- Firebase Studio dev.nix reference: <https://firebase.google.com/docs/studio/devnix-reference>  
+\# \- Nixpkgs search: <https://search.nixos.org/packages>
 
 { pkgs, lib,... }: {
 
@@ -161,7 +161,7 @@ Nix
   \# \--------------------------------------------------------------------------  
   \# System-level packages available in all THEA projects.  
   \# Add tools that are generally useful, regardless of language/framework.  
-  \# Search for packages at https://search.nixos.org/packages  
+  \# Search for packages at <https://search.nixos.org/packages>  
   packages \=  
     \# Add other universal CLI tools here (e.g., curl, wget, common build tools if not language-specific)  
   \];
@@ -184,7 +184,7 @@ Nix
   \# application previews, and workspace lifecycle hooks.  
   idx \= {  
     \# VS Code extensions to install automatically from the OpenVSX registry.  
-    \# Find extension IDs at https://open-vsx.org/  
+    \# Find extension IDs at <https://open-vsx.org/>  
     \# See Firebase documentation for details.\[8\]  
     extensions \=;
 
@@ -432,7 +432,7 @@ Most environment variables are simple strings. These are defined directly with t
 Nix
 
 env \= {  
-  API\_ENDPOINT \= "https://api.thea-project.example.com/v1";  
+  API\_ENDPOINT \= "<https://api.thea-project.example.com/v1>";  
   LOG\_LEVEL \= "debug";  
   FEATURE\_X\_ENABLED \= "true"; \# Booleans are typically represented as strings  
   DEFAULT\_REGION \= "us-central1";  
@@ -487,7 +487,7 @@ Understanding these methods for defining environment variables allows for flexib
 | Path Involving Home Directory | USER\_CONFIG\_PATH \= "$HOME/.myapp/config.yaml"; | $HOME is expanded by the shell when the environment is active. 16 |
 | Path to a Nix-Managed Package | TOOL\_EXECUTABLE \= "${pkgs.mytool}/bin/mytool"; | ${pkgs.mytool} interpolates to the Nix store path of the mytool package. |
 | Integer/Boolean (as String) | SERVER\_PORT \= "8080"; ENABLE\_METRICS \= "false"; | Environment variables are strings; application code handles conversion. |
-| Referencing Another env Variable | env \= rec { BASE\_URL \= "/api"; FULL\_URL \= "https://server.com${BASE\_URL}"; }; | Requires rec on the env attribute set. Useful for constructing values from other variables within env. 16 |
+| Referencing Another env Variable | env \= rec { BASE\_URL \= "/api"; FULL\_URL \= "<https://server.com${BASE\_URL}>"; }; | Requires rec on the env attribute set. Useful for constructing values from other variables within env. 16 |
 
 ## **6\. The Developer Workflow in Firebase Studio (Universal)**
 

@@ -24,7 +24,9 @@ This playbook provides comprehensive guidance and best practices for designing a
 *(Placeholder: Detailed steps and best practices for designing the AI system prompt that will be included *within* the Firebase Studio template. This will reference `docs/meta-prompts/prompt-to-write-better-prompts.md` and the "Gemini Prompting Guide.")*
 
 ### 4.1. Defining the Template's AI Sub-Persona
+
 ### 4.2. Core Rules & Constraints for the Template's AI
+
 ### 4.3. Project-Specific Context and Knowledge for the AI
 
 ## 5. Incorporating Domain-Specific THEA Guidance

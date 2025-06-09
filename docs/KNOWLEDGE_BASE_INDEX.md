@@ -71,8 +71,8 @@ When new learning resources (e.g., guides, tooling examples, playbook updates, s
   * `playbooks/ai_guidance/pulumi_ai_rules.md` - AI rules for Pulumi Go GCP Infrastructure.
 
 * **General Project Playbooks**
-    * `playbooks/project_initiation/AI_PROJECT_BRIEF_TEMPLATE.md` - Template for defining project specifics for AI collaboration.
-    * *(Placeholder: [Link to Project Retrospectives Playbook] - [Summary])*
+  * `playbooks/project_initiation/AI_PROJECT_BRIEF_TEMPLATE.md` - Template for defining project specifics for AI collaboration.
+  * *(Placeholder: [Link to Project Retrospectives Playbook] - [Summary])*
 
 * **Glossary**
   * `docs/GLOSSARY.MD` - Organizational glossary of terms.

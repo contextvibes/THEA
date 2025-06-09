@@ -54,6 +54,7 @@ markdownlint --fix path/to/your/document.md
 The `--fix` flag instructs the `markdownlint` tool to automatically correct every formatting error that it can, such as list spacing, indentation, and blank lines around headings and code blocks.
 
 To fix all modified markdown files at once, you can use a more general command:
+
 ```bash
 markdownlint --fix "**/*.md"
 ```

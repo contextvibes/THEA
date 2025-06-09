@@ -72,10 +72,10 @@ Lessons can be identified at any time, but formal opportunities include:
   * `Orion` (PO) will prioritize these PBIs in the Product Backlog.
   * Relevant conceptual personas will be involved in the PBI's refinement and execution.
 * **Knowledge Dissemination:**
-    *   Documented learnings (new guides, playbook updates, tooling examples) are added to the appropriate locations (e.g., `docs/guides/`, `playbooks/tooling_examples/`).
-    *   **When documenting lessons or creating new artifacts through collaboration with the THEA Collective AI (requiring user-mediated file operations), follow the specific workflow detailed in the '[Playbook: Capturing Lessons Learned with AI Collaboration (User-Mediated Document Flow)](../playbooks/process_guidance/capturing_lessons_with_ai_via_documents.md)'.**
-    *   `KNOWLEDGE_BASE_INDEX.MD` is updated by `Canon` or `Scribe` to index these new resources.
-    *   Significant new learning resources or process changes are communicated to the team by `Athena` or `Canon`.
+  * Documented learnings (new guides, playbook updates, tooling examples) are added to the appropriate locations (e.g., `docs/guides/`, `playbooks/tooling_examples/`).
+  * **When documenting lessons or creating new artifacts through collaboration with the THEA Collective AI (requiring user-mediated file operations), follow the specific workflow detailed in the '[Playbook: Capturing Lessons Learned with AI Collaboration (User-Mediated Document Flow)](../playbooks/process_guidance/capturing_lessons_with_ai_via_documents.md)'.**
+  * `KNOWLEDGE_BASE_INDEX.MD` is updated by `Canon` or `Scribe` to index these new resources.
+  * Significant new learning resources or process changes are communicated to the team by `Athena` or `Canon`.
 
 ## 8. Scrum Events
 

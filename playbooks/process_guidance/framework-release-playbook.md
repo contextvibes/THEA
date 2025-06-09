@@ -47,11 +47,13 @@ Before starting the release process, ensure the following conditions are met:
 ### Step 2: Create a Release Branch
 
 - **Action:** Create a new release branch from the `main` branch.
+
   ```bash
   git checkout main
   git pull origin main
   git checkout -b release/vX.Y.Z
   ```
+
   *(Replace `vX.Y.Z` with the new version number, e.g., `release/v0.4.0`)*.
 - **Rationale:** All release-specific changes (changelog, version bumps) will happen on this branch to keep `main` clean.
 
@@ -61,9 +63,9 @@ A changelog is critical for communicating changes to users.
 
 - **Action (if `CHANGELOG.md` doesn't exist):** Create a new file named `CHANGELOG.md` at the project root, following the "Keep a Changelog" format.
 - **Action (if `CHANGELOG.md` exists):**
-  1.  Rename the `[Unreleased]` section to `[vX.Y.Z] - YYYY-MM-DD`.
-  2.  Add a new, empty `[Unreleased]` section at the top.
-  3.  Review and refine the changelog entries for the new version. Ensure they are user-centric and clear.
+  1. Rename the `[Unreleased]` section to `[vX.Y.Z] - YYYY-MM-DD`.
+  2. Add a new, empty `[Unreleased]` section at the top.
+  3. Review and refine the changelog entries for the new version. Ensure they are user-centric and clear.
 - **Owner:** `Scribe`, with review from `Canon`.
 
 ### Step 4: Update Internal Version Numbers
@@ -76,35 +78,42 @@ A changelog is critical for communicating changes to users.
 ### Step 5: Create and Merge the Release Pull Request
 
 - **Action:**
-  1.  Commit the updated changelog and any other versioned files to the release branch.
-  2.  Push the release branch to the remote repository.
-  3.  Open a Pull Request from the `release/vX.Y.Z` branch to `main`.
-  4.  The PR description should state "Release PR for vX.Y.Z."
-  5.  At least one other core team member (e.g., `Athena`) must review and approve the PR.
-  6.  Once approved, merge the PR into `main`.
+  1. Commit the updated changelog and any other versioned files to the release branch.
+  2. Push the release branch to the remote repository.
+  3. Open a Pull Request from the `release/vX.Y.Z` branch to `main`.
+  4. The PR description should state "Release PR for vX.Y.Z."
+  5. At least one other core team member (e.g., `Athena`) must review and approve the PR.
+  6. Once approved, merge the PR into `main`.
 
 ### Step 6: Tag the Release
 
 This is the official act of creating the release.
 
 - **Action:**
-  1.  Pull the latest changes to your local `main` branch.
+  1. Pull the latest changes to your local `main` branch.
+
      ```bash
      git checkout main
      git pull origin main
      ```
-  2.  Create an **annotated Git tag**. The tag name must start with `v`.
+
+  2. Create an **annotated Git tag**. The tag name must start with `v`.
+
      ```bash
      git tag -a vX.Y.Z -m "Release vX.Y.Z"
      ```
-  3.  Push the tag to the remote repository.
+
+  3. Push the tag to the remote repository.
+
      ```bash
      git push origin vX.Y.Z
      ```
+
 - **Owner:** `Orion` or a designated release manager.
 
 ### Step 7: Post-Release Communication
 
 - **Action:** Announce the new release to the team via the appropriate channels (e.g., Slack, email). The announcement should include a link to the `CHANGELOG.md` section for the new version.
 - **Owner:** `Helms` or `Orion`.
+
 ```

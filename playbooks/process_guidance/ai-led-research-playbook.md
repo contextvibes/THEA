@@ -91,13 +91,13 @@ Conduct a deep and practical investigation into the foundational best practices 
 
 #### Core Research Areas
 
-1.  **[FIRST CORE AREA, e.g., "Nix Package Discovery and Canonical Naming"]:**
+1. **[FIRST CORE AREA, e.g., "Nix Package Discovery and Canonical Naming"]:**
     - **Task:** [Describe the high-level task for this area.]
     - **Key Questions to Answer:**
       - [Question 1]
       - [Question 2]
 
-2.  **[SECOND CORE AREA, e.g., "The Foundational `dev.nix` Template"]:**
+2. **[SECOND CORE AREA, e.g., "The Foundational `dev.nix` Template"]:**
     - **Task:** [Describe the high-level task for this area.]
     - **Key Questions to Answer:**
       - [Question 1]

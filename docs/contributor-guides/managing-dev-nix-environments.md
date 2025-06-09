@@ -91,15 +91,16 @@ All new THEA projects SHOULD start with a `.idx/dev.nix` file based on the follo
 
 ## 4. Universal Workflow for Adding a Package
 
-1.  **Find the Package:** Go to the official Nix Packages search: **[search.nixos.org](https://search.nixos.org/packages)**.
-2.  **Identify Attribute Name:** Search for your tool. The correct name to use is the "attribute name" (e.g., `nodejs_22`, `python311`).
-3.  **Add to `dev.nix`:** Add the package to the appropriate functional group in the `packages` list, keeping the group alphabetically sorted.
-4.  **Rebuild Environment:** Save the `.idx/dev.nix` file. Firebase Studio will prompt you to rebuild the environment. Click "Rebuild".
-5.  **Verify:** Open a new terminal and verify the tool is installed using `which <tool-command>` or `<tool-command> --version`.
+1. **Find the Package:** Go to the official Nix Packages search: **[search.nixos.org](https://search.nixos.org/packages)**.
+2. **Identify Attribute Name:** Search for your tool. The correct name to use is the "attribute name" (e.g., `nodejs_22`, `python311`).
+3. **Add to `dev.nix`:** Add the package to the appropriate functional group in the `packages` list, keeping the group alphabetically sorted.
+4. **Rebuild Environment:** Save the `.idx/dev.nix` file. Firebase Studio will prompt you to rebuild the environment. Click "Rebuild".
+5. **Verify:** Open a new terminal and verify the tool is installed using `which <tool-command>` or `<tool-command> --version`.
 
 ## 5. Managing Lifecycle Hooks (`onCreate` & `onStart`)
 
 A crucial distinction exists between these two hooks based on reliability during initial workspace creation.
 
 For the complete, official policy and implementation patterns, refer to:
--   **[Guide: Managing Lifecycle Hooks in dev.nix](./managing-lifecycle-hooks.md)**
+
+- **[Guide: Managing Lifecycle Hooks in dev.nix](./managing-lifecycle-hooks.md)**
