@@ -10,7 +10,7 @@ usageGuidance:
   - "Use this file to understand the high-level goals and repository layout."
 owner: "Scribe, Canon"
 createdDate: "2025-05-20T10:00:00Z"
-lastModifiedDate: "2025-06-08T11:30:00Z"
+lastModifiedDate: "2025-06-08T11:30:00Z" # Note: You might want to update this to today's date after these changes
 tags:
   - "readme"
   - "overview"
@@ -54,16 +54,16 @@ Key components are organized as follows:
   * `prompts/`: Standardized prompt templates for various coding tasks and languages.
   * `heuristics/`: Actionable heuristic rules that can trigger analysis or suggestions.
   * `schemas/`: Definitions for the structure of prompts and heuristics, ensuring consistency.
-* `thea/firebase_studio_templates/`: Contains schemas, playbooks, examples, and `airules.md` templates specifically for guiding the development of Firebase Studio project templates.
+  * `firebase_studio_templates/`: Contains schemas, playbooks, examples, and `airules.md` templates specifically for guiding the development of Firebase Studio project templates.
+  * `research/`: Research findings, papers, and experimental results that inform the design of THEA's prompts and heuristics. (Curated by @Logos)
+  * `playbooks/`: Processes, templates, and best practices for *creating and contributing to* THEA's guidance artifacts.
+    * `playbooks/process_guidance/`: Contains playbooks related to THEA's development processes and standards.
 * **`docs/`**: All project documentation for THEA, including:
   * User guides on understanding and leveraging THEA's guidance.
   * Architectural overviews of THEA.
   * Ethical guidelines for THEA's development and use.
   * (Link to Team Handbook & Personas, e.g., `docs/team/team-handbook.md`)
   * `docs/assets/images/`: Storage for diagrams and other visual assets used in documentation.
-* **`research/`**: Research findings, papers, and experimental results that inform the design of THEA's prompts and heuristics. (Curated by @Logos)
-* **`playbooks/`**: Processes, templates, and best practices for *creating and contributing to* THEA's guidance artifacts.
-  * `playbooks/process_guidance/`: Contains playbooks related to THEA's development processes and standards.
 * **`scripts/`**: Utility scripts for managing or validating THEA's artifacts (e.g., `scripts/dev_utils.sh`). *(Note: These may be deprecated/removed as functionality moves to ContextVibes CLI)*
 * **`.idx/`**: Firebase Studio configuration tailored for contributors working on THEA's artifacts (e.g., `airules.md` for AI assistance *during* THEA development, `dev.nix`).
 * **`.github/`**: GitHub specific files, including issue templates, PR templates (`CONTRIBUTING.MD` is also here).
@@ -93,7 +93,7 @@ This framework is a living entity. We are committed to continuous improvement by
 The THEA ecosystem, encompassing the THEA guidance system, Firebase Studio Templates, and the ContextVibes CLI, is designed for such continuous, iterative improvement. The development and use of these components are interconnected in a virtuous cycle, driven by developer experience and feedback:
 
 ![THEA Continuous Improvement Cycle](docs/assets/images/thea-continuous_improvement_cycle.svg)
-*(Process for creating and maintaining diagrams: [Playbook: Creating and Maintaining THEA Project Diagrams](playbooks/process_guidance/managing_project_diagrams.md))*
+*(Process for creating and maintaining diagrams: [Playbook: Creating and Maintaining THEA Project Diagrams](thea/playbooks/process_guidance/managing_project_diagrams.md))*
 
 This cycle ensures that practical needs identified during template development and usage feed back into enhancing both our core tooling (`ContextVibes CLI`) and our foundational guidance (`THEA`), leading to progressively more powerful and efficient development workflows.
 
