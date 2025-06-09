@@ -45,7 +45,7 @@
             export GOBIN="$LOCAL_BIN_DIR"
             echo "Running: GOBIN=$GOBIN go install github.com/contextvibes/cli/cmd/contextvibes@latest"
 
-            if go install github.com/contextvibes/cli/cmd/contextvibes@latest; then
+            if go install github.com/contextvibes/cli/cmd/contextvibes@v0.2.0; then
               echo "Successfully installed contextvibes to $LOCAL_BIN_DIR/contextvibes"
               echo "You can run it using: $LOCAL_BIN_DIR/contextvibes"
               echo "Consider adding '$LOCAL_BIN_DIR' to your PATH for convenience (see README)."

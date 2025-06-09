@@ -1,3 +1,24 @@
+---
+id: "doc:README"
+fileExtension: "md"
+title: "THEA (Tooling & Heuristics for Efficient AI-Development) - v0.1.0"
+artifactVersion: "0.1.0"
+status: "Active"
+summary: "The main entry point to the THEA project, providing an overview of its purpose, structure, core principles, and how to contribute."
+usageGuidance:
+  - "This is the first document to read when new to the project."
+  - "Use this file to understand the high-level goals and repository layout."
+owner: "Scribe, Canon"
+createdDate: "2025-05-20T10:00:00Z"
+lastModifiedDate: "2025-06-08T11:30:00Z"
+tags:
+  - "readme"
+  - "overview"
+  - "documentation"
+  - "thea-core"
+  - "entry-point"
+  - "guidance-system"
+---
 # THEA (Tooling & Heuristics for Efficient AI-Development) - v0.1.0 (Foundational Setup)
 
 Welcome to THEA, an AI guidance system designed to enhance developer productivity by providing intelligent tooling and actionable heuristics. This repository is the central hub for THEA's core guidance artifacts (prompts, heuristic rules, schemas), its supporting documentation, and the research that informs its intelligence.
