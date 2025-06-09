@@ -19,7 +19,7 @@ We welcome various types of contributions, including direct improvements to THEA
 *   **New THEA Artifacts:**
     *   Proposing new prompt templates or heuristic rules for different languages, tools, or specific AI models.
     *   Suggesting new schemas or rule sets.
-    *   **[NEW] Designing and proposing new Firebase Studio project templates, including their embedded THEA `airules.md` and alignment with THEA's template development playbooks (see `thea/firebase_studio_templates/`). [NEW]**
+    *   Designing and proposing new Firebase Studio project templates, including their embedded THEA `airules.md` and alignment with THEA's template development playbooks (see `thea/firebase_studio_templates/`).
 *   **Technical Learnings & Best Practices:**
     *   Documenting effective use of specific language features (e.g., Go concurrency patterns) that could inform THEA's guidance.
     *   Sharing performance optimization techniques or debugging strategies relevant to AI-assisted development.
@@ -37,8 +37,8 @@ We welcome various types of contributions, including direct improvements to THEA
 *   **Documentation Enhancements:**
     *   Identifying gaps in existing THEA documentation.
     *   Proposing new templates, guides, or playbook entries.
-*   **[NEW] Visual Documentation & Diagrams:** [NEW]
-    *   **[NEW] Proposing or creating new diagrams to clarify THEA concepts or processes. Refer to the '[Playbook: Creating and Maintaining THEA Project Diagrams](playbooks/process_guidance/managing_thea_diagrams.md)' for tooling and storage conventions. [NEW]**
+*   **Visual Documentation & Diagrams:**
+    *   Proposing or creating new diagrams to clarify THEA concepts or processes. Refer to the '[Playbook: Creating and Maintaining THEA Project Diagrams](playbooks/process_guidance/managing_thea_diagrams.md)' for tooling and storage conventions.
 *   **Bug Reports or Issues with THEA:** Identifying errors, inconsistencies, or areas where THEA's guidance is unclear or could be improved.
 
 ## 3. How to Propose a Contribution or Share a Lesson Learned
@@ -51,12 +51,12 @@ We welcome various types of contributions, including direct improvements to THEA
     *   Clearly describe the suggestion, the problem it solves, or the lesson learned.
     *   If it's a lesson learned leading to a framework improvement, state the lesson and the proposed action/artifact.
     *   Use appropriate labels if you're familiar with them.
-    *   **[UPDATED] For complex proposals, the GitHub Issue may link to a more detailed PBI specification written in Markdown within the repository (e.g., in `docs/product_backlog/items/`). [UPDATED]**
+    *   For complex proposals, the GitHub Issue may link to a more detailed PBI specification written in Markdown within the repository (e.g., in `docs/product_backlog/items/`).
 3.  **Prepare a Draft (If Applicable):**
     *   For documentation changes, you can prepare a draft or specific suggestions.
     *   For new THEA artifacts (prompts, heuristics), a clear outline or a prototype adhering to existing schemas (see `thea/schemas/`) is highly beneficial.
-    *   **[NEW] For new Firebase Studio Templates, a prototype of the template structure (including key files like `.idx/dev.nix`, the embedded `.idx/airules.md`, and any manifest) is highly beneficial. Ensure it aligns with guidance in `thea/firebase_studio_templates/PLAYBOOKS/designing_thea_aligned_firebase_templates.md`. [NEW]**
-    *   For "Lessons Learned" **[UPDATED] or other documentation [UPDATED]** that result in new documents (e.g., a new tooling example in `playbooks/tooling_examples/`, a new guide, a new playbook), draft that document. **If you are collaborating with the THEA Collective AI to draft such documents, please refer to the '[Playbook: Capturing Lessons Learned with AI Collaboration (User-Mediated Document Flow)](playbooks/process_guidance/capturing_lessons_with_ai_via_documents.md)' for the recommended workflow.**
+    *   For new Firebase Studio Templates, a prototype of the template structure (including key files like `.idx/dev.nix`, the embedded `.idx/airules.md`, and any manifest) is highly beneficial. Ensure it aligns with guidance in `thea/firebase_studio_templates/PLAYBOOKS/designing_thea_aligned_firebase_templates.md`.
+    *   For "Lessons Learned" or other documentation that result in new documents (e.g., a new tooling example in `playbooks/tooling_examples/`, a new guide, a new playbook), draft that document. **If you are collaborating with the THEA Collective AI to draft such documents, please refer to the '[Playbook: Capturing Lessons Learned with AI Collaboration (User-Mediated Document Flow)](playbooks/process_guidance/capturing_lessons_with_ai_via_documents.md)' for the recommended workflow.**
 4.  **Integration into the Product Backlog:**
     *   `Orion`, as Product Owner, will review new issues with `Athena`.
     *   Accepted proposals will be formulated as Product Backlog Items (PBIs) and prioritized.

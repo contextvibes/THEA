@@ -28,6 +28,7 @@ params:
   # detailed_research_doc: "docs/research_findings/gcp_data_weaver_profile.md" # We can add this if such a doc is created
 ---
 # ABOUTME: Persona Profile - Defines 'Stream', the GCP Data Weaver & ELT Specialist for THEA
+
 # ABOUTME: This document details Stream's objectives, competencies, interactions, and engagement triggers
 
 # Competency Profile: Stream

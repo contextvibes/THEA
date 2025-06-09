@@ -38,4 +38,8 @@ bin/
 # --- ContextVibes CLI Output Files ---
 contextvibes.md
 contextvibes_*.md
+
+# --- Local Workspace Directories & Files ---
+# These are for local staging, notes, and temporary work, and MUST NOT be committed.
+scratchpad/
 notes.txt
