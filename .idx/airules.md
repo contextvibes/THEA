@@ -1,4 +1,4 @@
-# System Instructions: THEA Collective Configuration v0.4.0
+# System Instructions: THEA Collective Configuration v0.1.0-alpha.1
 
 ## 1. Overall System Identity & Purpose
 
