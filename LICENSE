@@ -1,100 +1,21 @@
----
-id: "doc:README"
-fileExtension: "md"
-title: "THEA (Tooling & Heuristics for Efficient AI-Development) - v0.1.0"
-artifactVersion: "0.1.0"
-status: "Active"
-summary: "The main entry point to the THEA project, providing an overview of its purpose, structure, core principles, and how to contribute."
-usageGuidance:
-  - "This is the first document to read when new to the project."
-  - "Use this file to understand the high-level goals and repository layout."
-owner: "Scribe, Canon"
-createdDate: "2025-05-20T10:00:00Z"
-lastModifiedDate: "2025-06-08T11:30:00Z"
-tags:
-  - "readme"
-  - "overview"
-  - "documentation"
-  - "thea-core"
-  - "entry-point"
-  - "guidance-system"
----
-# THEA (Tooling & Heuristics for Efficient AI-Development) - v0.1.0 (Foundational Setup)
+MIT License
 
-Welcome to THEA, an AI guidance system designed to enhance developer productivity by providing intelligent tooling and actionable heuristics. This repository is the central hub for THEA's core guidance artifacts (prompts, heuristic rules, schemas), its supporting documentation, and the research that informs its intelligence.
+Copyright (c) 2025 Jasper Duizendstra
 
-THEA's guidance is consumed by **ContextVibes** (a separate system) to provide AI-assisted development features directly within the developer's environment.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-## 1. Purpose of THEA
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-THEA aims to:
-
-*   **Standardize AI Interaction:** Provide clear, versioned guidelines, rules, and prompt templates for effective and consistent collaboration with AI development assistants.
-*   **Promote Best Practices:** Embody and disseminate best practices for software development (initially focusing on Go), documentation, and security through its curated prompts and heuristics.
-*   **Enhance Developer Experience:** By providing structured and intelligent guidance to ContextVibes, THEA helps streamline development workflows and reduce cognitive load.
-*   **Foster Quality & Consistency:** Encourage high-quality, consistent code and documentation by providing standardized AI-driven assistance.
-*   **Guide Firebase Studio Template Development:** Provide principles, artifacts (schemas, playbooks, example `airules.md`), and AI assistance for crafting high-quality, THEA-aligned Firebase Studio project templates.
-
-## 2. How THEA's Guidance is Used
-
-Conceptually, the workflow is as follows:
-
-1.  **THEA Defines:** This repository contains THEA's "intelligence" – structured prompts, heuristic rules, and schemas.
-2.  **ContextVibes Consumes:** The ContextVibes engine (in its separate repository) is designed to fetch, parse, and interpret THEA's guidance artifacts.
-3.  **Developers Interact:** Developers using an IDE integrated with ContextVibes receive AI-powered suggestions, code generation, and analysis, all shaped by THEA's underlying guidance.
-4.  **Iterative Improvement:** THEA's guidance is designed to be versioned and improved over time based on feedback and new research.
-
-For more details on specific integrations, refer to the ContextVibes documentation and guides within this repository's `docs/` section.
-
-## 3. Navigating This Repository
-
-Key components are organized as follows:
-
-*   **`thea/`**: The core of THEA. Contains the actual guidance artifacts:
-    *   `prompts/`: Standardized prompt templates for various coding tasks and languages.
-    *   `heuristics/`: Actionable heuristic rules that can trigger analysis or suggestions.
-    *   `schemas/`: Definitions for the structure of prompts and heuristics, ensuring consistency.
-*   `thea/firebase_studio_templates/`: Contains schemas, playbooks, examples, and `airules.md` templates specifically for guiding the development of Firebase Studio project templates.
-*   **`docs/`**: All project documentation for THEA, including:
-    *   User guides on understanding and leveraging THEA's guidance.
-    *   Architectural overviews of THEA.
-    *   Ethical guidelines for THEA's development and use.
-    *   (Link to Team Handbook & Personas, e.g., `docs/team/TEAM_HANDBOOK.MD`)
-    *   `docs/assets/images/`: Storage for diagrams and other visual assets used in documentation.
-*   **`research/`**: Research findings, papers, and experimental results that inform the design of THEA's prompts and heuristics. (Curated by @Logos)
-*   **`playbooks/`**: Processes, templates, and best practices for *creating and contributing to* THEA's guidance artifacts.
-    *   `playbooks/process_guidance/`: Contains playbooks related to THEA's development processes and standards.
-*   **`scripts/`**: Utility scripts for managing or validating THEA's artifacts (e.g., `scripts/dev_utils.sh`). *(Note: These may be deprecated/removed as functionality moves to ContextVibes CLI)*
-*   **`.idx/`**: Firebase Studio configuration tailored for contributors working on THEA's artifacts (e.g., `airules.md` for AI assistance *during* THEA development, `dev.nix`).
-*   **`.github/`**: GitHub specific files, including issue templates, PR templates (`CONTRIBUTING.MD` is also here).
-
-## 4. Contributing to THEA
-
-THEA is an evolving system, and contributions are welcome! Whether it's suggesting new prompts, refining heuristics, improving documentation, or sharing research, your input is valuable.
-
-Please see `CONTRIBUTING.MD` (in the `.github/` directory) for detailed guidelines on how to contribute. THEA's development follows agile principles, and we adhere to the "Think Big, Start Small, Learn Fast" philosophy.
-
-## 5. Core Principles
-
-*   **Think Big, Start Small, Learn Fast:** We embrace ambitious goals while prioritizing iterative development and rapid learning.
-*   *(Other core principles can be added here or linked to a dedicated document)*
-
----
-*This THEA README is managed by @Scribe and @Canon, with strategic guidance from @Orion and @Athena. Technical review for ContextVibes integration by @Kernel.*
-
-## 6. Continuous Improvement & Lessons Learned
-
-This framework is a living entity. We are committed to continuous improvement by:
-
-*   Systematically capturing lessons learned during project execution and framework development.
-*   Feeding valuable insights back into THEA's guidance, our playbooks, and overall processes.
-*   Fostering a culture where knowledge sharing drives our evolution.
-
-The THEA ecosystem, encompassing the THEA guidance system, Firebase Studio Templates, and the ContextVibes CLI, is designed for such continuous, iterative improvement. The development and use of these components are interconnected in a virtuous cycle, driven by developer experience and feedback:
-
-![THEA Continuous Improvement Cycle](docs/assets/images/thea_continuous_improvement_cycle.svg)
-*(Process for creating and maintaining diagrams: [Playbook: Creating and Maintaining THEA Project Diagrams](playbooks/process_guidance/managing_thea_diagrams.md))*
-
-This cycle ensures that practical needs identified during template development and usage feed back into enhancing both our core tooling (`ContextVibes CLI`) and our foundational guidance (`THEA`), leading to progressively more powerful and efficient development workflows.
-
-*(Refer to `docs/process/AGILE_FRAMEWORK_DEVELOPMENT.MD` and `CONTRIBUTING.MD` for more on how insights are captured and integrated.)*
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
