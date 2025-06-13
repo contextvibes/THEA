@@ -16,6 +16,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - 
 
+## [v0.2.0] - 2025-06-13
+
+### Added
+- **New Governance Playbooks:** Created a comprehensive set of playbooks for core team processes, including:
+  - `contribution-and-improvement-playbook.md`: Defines the end-to-end process for community and team contributions.
+  - `puzzle-assembly-playbook.md`: Establishes the "Puzzle Philosophy" for understanding the ContextVibes ecosystem.
+  - `ai-led-research-playbook.md`: Formalizes the process for commissioning research to inform the framework.
+- **New Lessons Learned Process:** Implemented a formal process for capturing key insights, with initial documents on documentation standards and front matter exceptions.
+
+### Changed
+- **Metadata Overhaul:** Audited and updated the YAML front matter for nine core framework documents to ensure full compliance with `thea-artifact-metadata-schema.json`, significantly improving the framework's machine-readability for AI tools.
+- **Contribution Guidelines:** Refined `CONTRIBUTING.MD` to align with the new, issue-driven contribution playbook.
+- **Policy Establishment:** Formalized the policy to exclude repository-facing documents (like `README.md` and `CONTRIBUTING.MD`) from front matter indexing to ensure proper rendering on GitHub.
+
+### Fixed
+- **Inconsistent Metadata:** Corrected and completed metadata across numerous key documents, resolving inconsistencies and ensuring all required fields are present.
+
 ## [v0.1.0-alpha.1] - 2025-06-08
 
 ### Added

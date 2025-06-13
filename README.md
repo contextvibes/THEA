@@ -1,4 +1,4 @@
-# THEA (Tooling & Heuristics for Efficient AI-Development) - v0.1.0 (Foundational Setup)
+# THEA (Tooling & Heuristics for Efficient AI-Development) - v0.2.0
 
 Welcome to THEA, an AI guidance system designed to enhance developer productivity by providing intelligent tooling and actionable heuristics. This repository is the central hub for THEA's core guidance artifacts, its supporting documentation, and the research that informs its intelligence.
 

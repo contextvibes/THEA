@@ -1,16 +1,25 @@
 ---
-id: "doc:team/team-handbook" the complete, correct content for the team handbook. This version includes the full front matter block, making it a compliant THE
+id: "doc:team/team-handbook"
 fileExtension: "md"
 title: "THEA Team Handbook"
-artifactVersion: "1.1.0"
+artifactVersion: "1.2.0" # Version bump for metadata update
 status: "Active"
-summary: "The central handbook defining the THEA team's operating philosophyA artifact.
-
-Please replace the entire content of **`docs/team/team-handbook.md`** with, core principles, and conceptual team roles (personas) and their responsibilities."
+summary: "The central handbook defining the THEA team's operating philosophy, core principles, and conceptual team roles (personas) and their responsibilities."
 usageGuidance:
-  - " this definitive version.
-
-```markdown
+  - "Use as the primary reference for understanding team roles and responsibilities."
+  - "Consult this document to identify the correct persona to engage for a specific task or question."
+  - "Refer to for understanding the project's core operating principles like 'Think Big, Start Small, Learn Fast'."
+owner: "Scribe, Canon"
+createdDate: "2025-06-01T10:00:00Z"
+lastModifiedDate: "2025-06-13T04:56:00Z" # Reflects current update time
+tags:
+  - "handbook"
+  - "team"
+  - "personas"
+  - "roles"
+  - "process"
+  - "governance"
+  - "principles"
 ---
 id: "doc:team/team-handbook"
 fileExtension:Use as the primary reference for understanding team roles and responsibilities."

@@ -2,14 +2,15 @@
 id: "playbook:process/framework-release"
 fileExtension: "md"
 title: "Playbook: THEA Framework Release"
-artifactVersion: "1.0.0"
+artifactVersion: "1.1.0" # Version bump for metadata update
 status: "Active"
 summary: "Provides the standard, step-by-step checklist for tagging, documenting, and communicating a new release of the THEA framework."
 usageGuidance:
   - "This playbook MUST be followed for all official versioned releases of the THEA framework."
+  - "Use this to understand the process for updating the CHANGELOG.md and creating Git tags."
 owner: "Orion, Canon"
 createdDate: "2025-06-08T20:00:00Z"
-lastModifiedDate: "2025-06-08T20:00:00Z"
+lastModifiedDate: "2025-06-13T05:00:00Z" # Reflects current update time
 tags:
   - "playbook"
   - "process"

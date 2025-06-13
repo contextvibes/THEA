@@ -1,15 +1,16 @@
 ---
-id: "doc:contributor-guides/style-guide"
+id: "guide:style-guide"
 fileExtension: "md"
 title: "THEA Contributor Style Guide"
-artifactVersion: "1.1.0"
+artifactVersion: "1.2.0" # Version bump for metadata update
 status: "Active"
-summary: "A guide defining content standards for the THEA framework, including filename conventions, Markdown linting, artifact status, and other stylistic rules."
+summary: "The definitive guide defining content standards for the THEA framework, including filename conventions, artifact status lifecycle, and other stylistic rules."
 usageGuidance:
   - "Consult this guide before creating or modifying any new files or documentation to ensure consistency."
+  - "Primary reference for the 'lowercase-kebab-case' filename convention."
 owner: "Canon"
 createdDate: "2025-06-07T12:00:00Z"
-lastModifiedDate: "2025-06-08T11:00:00Z"
+lastModifiedDate: "2025-06-13T05:02:00Z" # Reflects current update time
 tags:
   - "style-guide"
   - "standards"
@@ -17,7 +18,6 @@ tags:
   - "contribution"
   - "process"
   - "naming-convention"
-  - "linting"
   - "lifecycle"
 ---
 # THEA Contributor Style Guide

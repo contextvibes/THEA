@@ -1,86 +1,35 @@
-# Contributing to THEA (Tooling & Heuristics for Efficient AI-Development)
+# How to Contribute to THEA
 
-Thank you for your interest in contributing to THEA! This framework is designed to be an evolving toolkit, and your insights are invaluable. As THEA itself is developed using agile principles, contributions will typically be integrated via our Product Backlog and Sprint process.
+First off, thank you for considering contributing to THEA! We welcome any and all ideas that can help us improve our framework for AI-assisted development. This document provides a high-level overview of how you can contribute.
 
-## 1. How THEA is Developed
+## Guiding Principles
 
-We use a Scrum-based approach to manage the development and iteration of THEA. Please refer to `docs/process/AGILE_FRAMEWORK_DEVELOPMENT.MD` for details on:
-*   Our development roles (Product Owner: `Orion`, Scrum Master: `Helms`, Development Team coordinated by `Athena`).
-*   Our Product Backlog and how items are prioritized.
-*   Our Sprint process and Definition of Done.
+- **Openness:** We welcome ideas and contributions from everyone.
+- **Transparency:** We use GitHub Issues and Pull Requests to track all changes and discussions.
+- **Respect:** All interactions should follow our "Be Kind" principle.
 
-## 2. Types of Contributions & Lessons Learned
+## The Easiest Way to Contribute: Submit an Idea
 
-We welcome various types of contributions, including direct improvements to THEA's artifacts and the valuable **lessons learned** from using the framework and related tools. Your insights help us grow! Consider contributing:
+The best way to propose an improvement, report a bug, or request a new feature is by **opening a GitHub Issue**.
 
-*   **Improvements to Existing THEA Artifacts:**
-    *   Suggesting clarifications, additions, or corrections to existing prompts, heuristics, schemas (`thea/`).
-    *   Enhancements to core documentation like `README.md`, `TEAM_HANDBOOK.MD`, persona profiles, or user guides (`docs/`).
-*   **New THEA Artifacts:**
-    *   Proposing new prompt templates or heuristic rules for different languages, tools, or specific AI models.
-    *   Suggesting new schemas or rule sets.
-    *   Designing and proposing new Firebase Studio project templates, including their embedded THEA `airules.md` and alignment with THEA's template development playbooks (see `thea/firebase_studio_templates/`).
-*   **Technical Learnings & Best Practices:**
-    *   Documenting effective use of specific language features (e.g., Go concurrency patterns) that could inform THEA's guidance.
-    *   Sharing performance optimization techniques or debugging strategies relevant to AI-assisted development.
-*   **Tooling Insights & Feedback:**
-    *   Sharing effective configurations for IDEs, linters, or other dev tools relevant to THEA contributors (e.g., for `.idx/dev.nix`).
-    *   Documenting useful scripts or automation snippets (to be added to `thea/playbooks/tooling_examples/` or `scripts/`).
-    *   Providing feedback for core tools like `ContextVibes CLI` (to be channeled through `Nexus`).
-*   **Process Improvements:**
-    *   Suggesting refinements to our Scrum process for THEA development.
-    *   Proposing better ways to manage documentation or review THEA artifacts.
-*   **AI Collaboration Best Practices:**
-    *   Sharing effective prompting strategies for specific tasks when working with THEA/ContextVibes.
-    *   Documenting how to structure information for optimal AI understanding (e.g., improvements to `AI_PROJECT_BRIEF_TEMPLATE.MD`).
-    *   Reporting limitations or biases observed in AI assistance and how to mitigate them.
-*   **Documentation Enhancements:**
-    *   Identifying gaps in existing THEA documentation.
-    *   Proposing new templates, guides, or playbook entries.
-*   **Visual Documentation & Diagrams:**
-    *   Proposing or creating new diagrams to clarify THEA concepts or processes. Refer to the '[Playbook: Creating and Maintaining THEA Project Diagrams](thea/playbooks/process_guidance/managing_thea_diagrams.md)' for tooling and storage conventions.
-*   **Bug Reports or Issues with THEA:** Identifying errors, inconsistencies, or areas where THEA's guidance is unclear or could be improved.
+[**Click here to open a new Issue**](https://github.com/your-repo/thea/issues/new/choose)
 
-## 3. How to Propose a Contribution or Share a Lesson Learned
+Simply choose the appropriate template, fill in the details, and our team will review it.
 
-1.  **Initial Discussion (Recommended):** For significant new features, THEA artifacts, or structural changes, it's best to first discuss your idea with:
-    *   `Athena` (THEA Development Coordinator / AI Strategy Lead)
-    *   `Orion` (Product Owner for THEA)
-    This helps align the proposal with THEA's strategic direction and current priorities.
-2.  **Create a GitHub Issue:** For all proposals, bug reports, or documented lessons learned that require action, please create an Issue in this repository's issue tracker. This is the primary way to get your contribution into the backlog.
-    *   Clearly describe the suggestion, the problem it solves, or the lesson learned.
-    *   If it's a lesson learned leading to a framework improvement, state the lesson and the proposed action/artifact.
-    *   Use appropriate labels if you're familiar with them.
-    *   For complex proposals, the GitHub Issue may link to a more detailed PBI specification written in Markdown within the repository (e.g., in `docs/product_backlog/items/`).
-3.  **Prepare a Draft (If Applicable):**
-    *   For documentation changes, you can prepare a draft or specific suggestions.
-    *   For new THEA artifacts (prompts, heuristics), a clear outline or a prototype adhering to existing schemas (see `thea/schemas/`) is highly beneficial.
-    *   For new Firebase Studio Templates, a prototype of the template structure (including key files like `.idx/dev.nix`, the embedded `.idx/airules.md`, and any manifest) is highly beneficial. Ensure it aligns with guidance in `thea/firebase_studio_templates/PLAYBOOKS/designing_thea_aligned_firebase_templates.md`.
-    *   For "Lessons Learned" or other documentation that result in new documents (e.g., a new tooling example in `thea/playbooks/tooling_examples/`, a new guide, a new playbook), draft that document. **If you are collaborating with the THEA Collective AI to draft such documents, please refer to the '[Playbook: Capturing Lessons Learned with AI Collaboration (User-Mediated Document Flow)](thea/playbooks/process_guidance/capturing_lessons_with_ai_via_documents.md)' for the recommended workflow.**
-4.  **Integration into the Product Backlog:**
-    *   `Orion`, as Product Owner, will review new issues with `Athena`.
-    *   Accepted proposals will be formulated as Product Backlog Items (PBIs) and prioritized.
-    *   The THEA Development Team (coordinated by `Athena`) will then pick up the PBI in a future Sprint. You may be asked to collaborate on its implementation.
+### What to Expect After Submitting an Issue:
 
-## 4. Contribution Guidelines
+1.  **Triage & Review:** Our project leads (`Orion` and `Athena`) will review your submission for strategic fit and value. They will label it accordingly.
+2.  **Formalization:** If the idea is accepted, it will be converted into a formal Product Backlog Item (PBI) and added to our work queue.
+3.  **Implementation:** The PBI will then be prioritized and worked on by the team as part of our regular development Sprints.
 
-*   **Clarity and Conciseness:** Ensure your contributions are clear, concise, and easy to understand.
-*   **Adhere to Schemas:** When contributing new THEA artifacts (prompts, heuristics), ensure they follow the defined schemas in `thea/schemas/`.
-*   **Markdown Formatting:** For documentation, please adhere to our Markdown standards (see `.markdownlint.jsonc`).
-*   **Respect Existing Structure:** When modifying existing documents, try to maintain the established structure and tone unless the change explicitly aims to improve them.
-*   **Focus on Reusability:** Aim for contributions that are broadly applicable.
-*   **"Think Big, Start Small, Learn Fast":** We encourage innovative ideas, but proposals should ideally allow for iterative implementation and learning.
-*   **"Be Kind":** All interactions and contributions should align with our core operating principle of kindness and respectful collaboration.
+For a detailed breakdown of this entire process, please see our **[Contribution and Improvement Process Playbook](thea/application-guides/playbooks/process_guidance/contribution-and-improvement-playbook.md)**.
 
-## 5. Getting Help
+## Contributing via Pull Requests
 
-If you have questions about contributing or THEA itself, please reach out to:
-*   `Athena`: For general THEA strategy, content, and AI integration aspects.
-*   `Helms`: For questions about our Scrum process.
-*   `Canon`: For documentation standards and structure.
-*   `Kernel`: For technical aspects related to ContextVibes interaction or THEA artifact tooling.
+If you wish to contribute code or documentation directly, we ask that you please follow these steps:
 
-We appreciate your help in making THEA a valuable resource for everyone!
+1.  Find a PBI in our **[GitHub Issues](https://github.com/your-repo/thea/issues)** that is labeled `status: accepted` and `help-wanted`.
+2.  Follow the instructions in the PBI to implement the required changes.
+3.  Submit a Pull Request, linking it to the PBI issue you are addressing.
 
----
-*(This `CONTRIBUTING.MD` is managed by @Scribe and @Canon, with strategic guidance from @Orion and @Athena.)*
+Thank you again for your interest in making THEA better!

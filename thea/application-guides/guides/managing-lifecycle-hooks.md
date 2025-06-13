@@ -1,3 +1,26 @@
+---
+id: "guide:managing-lifecycle-hooks"
+fileExtension: "md"
+title: "Guide: Managing Lifecycle Hooks in dev.nix"
+artifactVersion: "1.2.0" # Version bump for metadata update
+status: "Active"
+summary: "Defines the THEA best practice for managing script logic within Firebase Studio's onCreate and onStart lifecycle hooks, differentiating between self-contained bootstrapping and reusable scripts."
+usageGuidance:
+  - "Consult this guide when implementing logic in the idx.workspace section of a dev.nix file."
+  - "Use this to understand the reliability differences between onCreate and onStart."
+owner: "Sparky, Kernel"
+createdDate: "2025-06-08T18:00:00Z"
+lastModifiedDate: "2025-06-13T04:58:00Z" # Reflects current update time
+tags:
+  - "guide"
+  - "nix"
+  - "firebase-studio"
+  - "dev-environment"
+  - "process"
+  - "automation"
+  - "lifecycle-hooks"
+  - "scripts"
+---
 ### The Strategic Pivot: Inline Scripts are Correct for `onCreate`
 
 We must reverse our previous documentation. The initial pattern of embedding the script logic directly into the `dev.nix` file is, in fact, the more robust and reliable method for `onCreate` hooks. It has no external file dependencies and will always work as long as the tools it calls (like `go` or `mkdir`) are available from the Nix environment.
