@@ -1,16 +1,17 @@
 ---
-id: "doc:guides/managing-dev-nix-environments"
+id: "guide:managing-dev-nix-environments"
 fileExtension: "md"
 title: "Guide: Managing dev.nix in Firebase Studio"
-artifactVersion: "1.4.0"
+artifactVersion: "1.5.0" # Version bump for metadata update
 status: "Active"
-summary: "The official guide and best practices for creating, reviewing, and maintaining the .idx/dev.nix file for THEA project development environments."
+summary: "The official guide and best practices for creating, reviewing, and maintaining the .idx/dev.nix file for THEA project development environments in Firebase Studio."
 usageGuidance:
-  - "This guide is the single source of truth for managing the dev.nix file."
+  - "This is the single source of truth for managing a project's dev.nix file."
   - "Use this as the standard for reviewing Pull Requests that modify the development environment."
+  - "Consult this to find the official Nix package search website and the THEA channel policy."
 owner: "Sparky"
 createdDate: "2025-06-08T14:30:00Z"
-lastModifiedDate: "2025-06-08T19:15:00Z"
+lastModifiedDate: "2025-06-13T04:57:00Z" # Reflects current update time
 tags:
   - "guide"
   - "nix"

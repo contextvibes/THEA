@@ -2,16 +2,16 @@
 id: "doc:process/agile-framework-development"
 fileExtension: "md"
 title: "Agile Framework Development Process for THEA"
-artifactVersion: "0.2.1" # Incrementing patch for this update
+artifactVersion: "0.3.0" # Version bump for metadata update
 status: "Active"
-summary: "Outlines the Scrum-based approach for the iterative development and evolution of THEA and the ai-assisted-dev-framework, including lessons learned integration."
+summary: "Outlines the Scrum-based approach for the iterative development of the THEA framework, including roles, events, artifacts, and the process for integrating lessons learned."
 usageGuidance:
   - "Primary reference for understanding THEA's internal development methodology."
-  - "Consult to understand Scrum roles, events, and processes within the THEA project."
-  - "Refer to for details on how lessons learned are captured and integrated."
-owner: "Helms, Athena" # Key process owners
-createdDate: "2025-06-07T00:00:00Z" # Assuming an original creation date, adjust if known
-lastModifiedDate: "2025-06-09T15:30:00Z" # Approximate current time
+  - "Consult to identify team roles (PO, SM) and their responsibilities."
+  - "Refer to for the official Definition of Done (DoD) for framework assets."
+owner: "Helms, Athena"
+createdDate: "2025-06-07T00:00:00Z"
+lastModifiedDate: "2025-06-13T04:55:00Z" # Reflects current update time
 tags:
   - "process"
   - "agile"

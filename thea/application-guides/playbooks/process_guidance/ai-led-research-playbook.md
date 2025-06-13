@@ -2,14 +2,15 @@
 id: "playbook:process/ai-led-research"
 fileExtension: "md"
 title: "Playbook: Commissioning AI-Led Research"
-artifactVersion: "1.1.0"
+artifactVersion: "1.2.0" # Version bump for metadata update
 status: "Active"
 summary: "Defines the standard process for commissioning, synthesizing, and archiving targeted research from a specialized LLM to inform the creation of THEA artifacts."
 usageGuidance:
-  - "Follow this playbook when a foundational knowledge gap is identified that requires deep, structured research before a new guide or standard can be created."
+  - "Follow this playbook when a foundational knowledge gap is identified that requires deep, structured research."
+  - "Use this process to ensure valuable research outputs are properly archived and integrated."
 owner: "Athena"
 createdDate: "2025-06-08T12:30:00Z"
-lastModifiedDate: "2025-06-08T15:00:00Z"
+lastModifiedDate: "2025-06-13T05:03:00Z" # Reflects current update time
 tags:
   - "playbook"
   - "process"

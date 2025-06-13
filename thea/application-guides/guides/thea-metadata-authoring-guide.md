@@ -1,16 +1,17 @@
 ---
+id: "guide:thea-metadata-authoring"
+fileExtension: "md"
 title: "THEA Artifact Metadata Authoring Guide"
-status: draft
-artifactVersion: "1.0.0"
+artifactVersion: "1.1.0" # Version bump for metadata update
+status: "Active"
 summary: "A comprehensive guide for authors on how to write effective YAML front matter for THEA framework documents to optimize discoverability and usage by LLMs and automation tools like 'contextvibes index'."
-owner: "Scribe"
-createdDate: "2025-06-08T11:00:00Z"
-lastModifiedDate: "2025-06-08T11:00:00Z"
-defaultTargetPath: "docs/thea/guides/METADATA_AUTHORING_GUIDE.md"
 usageGuidance:
   - "Primary reference for creating new documents (playbooks, guides, templates) for the THEA framework."
   - "Use to ensure metadata consistency and quality across all THEA artifacts."
   - "Consult when troubleshooting why a specific document is not being found or suggested correctly by an AI assistant."
+owner: "Scribe, Canon"
+createdDate: "2025-06-08T11:00:00Z"
+lastModifiedDate: "2025-06-13T05:01:00Z" # Reflects current update time
 tags:
   - "authoring-guide"
   - "documentation"
@@ -20,6 +21,7 @@ tags:
   - "llm-optimization"
   - "thea-framework"
   - "scribe"
+  - "canon"
   - "contextvibes-index"
 ---
 
