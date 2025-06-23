@@ -1,17 +1,10 @@
 # tasks/_task-finish.yml
 # Implements the high-level 'task-finish' command.
-
 version: '3'
-
-# Includes the git helper library for git-based actions.
-includes:
-  _git: ./_git.yml
 
 tasks:
   task-finish:
-    desc: "(Workflow) Finishes a task by syncing and creating a pull request."
-    internal: true
+    desc: "(Action) Syncs the branch and opens a browser to create a PR."
     silent: true
     cmds:
-      - task: _git:sync
-      - task: _git:create-pr
+      - ./scripts/finish_task.sh
