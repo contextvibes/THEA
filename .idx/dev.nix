@@ -1,85 +1,108 @@
 { pkgs, ... }:
 {
+  # Specifies the Nixpkgs channel to ensure a reproducible package set across machines.
   channel = "stable-25.05";
-  
-  packages = with pkgs; [
-    # --- Core Development & Workflow ---
-    go
-    gotools
-    git # Version control system
 
-    # --- Utilities --
-    gh
-    tree # Directory structure viewer
-    nodejs # Added for markdownlint-cli and general node tooling
-    nodePackages.markdownlint-cli
+  # Defines the packages to be installed in the development environment.
+  packages = with pkgs; [
+    # --- Core Dependency for Tooling ---
+    # The Go toolchain is required to build and install Go-based CLI tools,
+    # such as the 'contextvibes' CLI installed in the onCreate hook below.
+    go
+
+    # --- Project Automation ---
+    # A task runner that uses a 'Taskfile.yml' to automate common project commands.
+    go-task
+
+    # --- Code Quality & Linting ---
+    nodejs # The JavaScript runtime, required by markdownlint-cli.
+    nodePackages.markdownlint-cli # A linter to enforce standards in Markdown files.
+
+    # --- Essential Utilities ---
+    git  # The version control system for managing source code.
+    gh   # The official GitHub CLI for interacting with GitHub from the terminal.
+    jq   # A command-line JSON processor, useful for scripting.
+    tree # A utility to display directory structures.
   ];
 
-  env = {
-    # No global environment variables defined for the workspace itself
-  };
+  # Sets global environment variables for the Nix shell. This is empty for now.
+  env = { };
 
+  # Configures the IDX workspace environment.
   idx = {
+    # Specifies VS Code extensions to install automatically for a better IDE experience.
     extensions = [
-      "golang.go"
+      # Provides syntax highlighting and management features for Dockerfiles.
+      "ms-azuretools.vscode-docker"
+
+      # Integrates GitHub pull requests and issues directly into the editor.
       "GitHub.vscode-pull-request-github"
+
+      # Lints Markdown files to ensure consistent formatting.
       "DavidAnson.vscode-markdownlint"
     ];
 
+    # Defines lifecycle hooks that run at different stages of the workspace's life.
     workspace = {
+      # Runs only ONCE when the workspace is first created to handle initial setup.
       onCreate = {
-        # Script to install contextvibes CLI into ./bin
         installContextVibesCli = ''
-          echo "Attempting to install contextvibes CLI into ./bin ..."
-
-          if ! command -v go &> /dev/null
-          then
-              echo "Go command could not be found, skipping contextvibes installation."
-              # Exit gracefully or 'exit 1' if critical
-              # For now, we'll assume Go is present due to pkgs.go
+          # This script installs a project-specific tool not available in Nixpkgs.
+          echo ">>> Setting up ContextVibes CLI..."
+          LOCAL_BIN_DIR="$(pwd)/bin"
+          mkdir -p "$LOCAL_BIN_DIR"
+          
+          # Use GOBIN to direct 'go install' to the local ./bin directory.
+          export GOBIN="$LOCAL_BIN_DIR"
+          echo "Installing contextvibes@v0.2.0 into $GOBIN..."
+          
+          # Install a specific, known-good version for reproducibility.
+          if go install github.com/contextvibes/cli/cmd/contextvibes@v0.2.0; then
+            echo "✅ Successfully installed contextvibes to $GOBIN/contextvibes"
+            chmod +x "$GOBIN/contextvibes"
           else
-            LOCAL_BIN_DIR="$(pwd)/bin"
-            mkdir -p "$LOCAL_BIN_DIR"
-            echo "Target directory for contextvibes: $LOCAL_BIN_DIR"
-
-            export GOBIN="$LOCAL_BIN_DIR"
-            echo "Running: GOBIN=$GOBIN go install github.com/contextvibes/cli/cmd/contextvibes@latest"
-
-            if go install github.com/contextvibes/cli/cmd/contextvibes@v0.2.0; then
-              echo "Successfully installed contextvibes to $LOCAL_BIN_DIR/contextvibes"
-              echo "You can run it using: $LOCAL_BIN_DIR/contextvibes"
-              echo "Consider adding '$LOCAL_BIN_DIR' to your PATH for convenience (see README)."
-              chmod +x "$LOCAL_BIN_DIR/contextvibes" || echo "Note: chmod +x on contextvibes failed."
-            else
-              echo "ERROR: Failed to install contextvibes."
-            fi
-            unset GOBIN
+            # Provide a clear, actionable error message on failure.
+            echo "❌ ERROR: Failed to install contextvibes. Check Go environment and network."
+            exit 1 # Halt further onCreate scripts on failure.
           fi
+          
+          unset GOBIN
         '';
       };
 
+      # Runs EVERY TIME the workspace is started to validate the environment.
       onStart = {
         checkContextVibes = ''
-          echo "Checking for ContextVibes CLI in ./bin ..."
-          WORKSPACE_BIN_DIR="$(pwd)/bin" 
-          CONTEXTVIBES_EXE="$WORKSPACE_BIN_DIR/contextvibes"
+          # This script validates that the ContextVibes CLI is installed and executable.
+          echo ">>> Verifying ContextVibes CLI installation..."
+          EXE_PATH="$(pwd)/bin/contextvibes"
 
-          if [ -f "$CONTEXTVIBES_EXE" ]; then
-            VERSION_OUTPUT="$("$CONTEXTVIBES_EXE" version 2>&1)"
-            if [ $? -eq 0 ]; then
-              CLEAN_VERSION=$(echo "$VERSION_OUTPUT" | grep "Version:" | sed 's/.*Version: //')
-              echo "ContextVibes CLI found. Version: $CLEAN_VERSION"
-            else
-              echo "ContextVibes CLI found in ./bin, but 'version' command failed. Output: $VERSION_OUTPUT"
-            fi
+          # Verify that the executable file exists.
+          if [ ! -f "$EXE_PATH" ]; then
+            echo "⚠️ ContextVibes CLI not found at $EXE_PATH. Run the 'onCreate' hook if this is a new workspace."
+            exit 1
+          fi
+
+          # Verify that the file has execute permissions.
+          if [ ! -x "$EXE_PATH" ]; then
+            echo "❌ ERROR: Found contextvibes at $EXE_PATH, but it is not executable. Attempting to fix..."
+            chmod +x "$EXE_PATH" || exit 1
+          fi
+
+          # Verify that the tool is functional by running its version command.
+          if VERSION_OUTPUT=$("$EXE_PATH" version); then
+            echo "✅ ContextVibes CLI is ready. Version: $VERSION_OUTPUT"
           else
-            echo "ContextVibes CLI not found in $WORKSPACE_BIN_DIR. Run 'onCreate' hook or install manually if needed."
+            echo "❌ ERROR: ContextVibes CLI is present but the 'version' command failed."
+            exit 1
           fi
         '';
       };
     };
 
+    # Configures web previews for the workspace.
     previews = {
+      # Previews are disabled as this is primarily a CLI-focused environment.
       enable = false;
     };
   };

@@ -1,0 +1,203 @@
+# Taskfile.yml
+# This is the main entry point for all project automation.
+# REVISION: This menu has been updated based on cognitive ergonomic analysis
+# and the official Taskfile style guide.
+
+version: '3'
+
+# ==============================================================================
+#  INCLUDED TASK FILES
+# ==============================================================================
+# CONVENTION: The files included here are organized to match the command menu
+# displayed by the `default` task. All included files start with '_' for
+# a consistent file system structure.
+# ==============================================================================
+includes:
+  # --- Local Development (Inner Loop) ---
+  _task-start:      ./tasks/_task-start.yml  # Implements the `task-start` command.
+  _status:          ./tasks/_status.yml      # Implements the `status` command.
+  _run:             ./tasks/_run.yml       # Implements the `run` command.
+  _commit:          ./tasks/_commit.yml      # Implements the `commit` command.
+  _task-finish:     ./tasks/_task-finish.yml # Implements the `task-finish` command.
+
+  # --- Build & Release Pipeline (Outer Loop) ---
+  _build:           ./tasks/_build.yml      # Implements the `build` command to create artifacts.
+  _test:            ./tasks/_test.yml       # Implements the `test` command to run the test suite.
+  _analyze:         ./tasks/_analyze.yml    # Implements the `analyze` command for code quality checks.
+  _deploy:          ./tasks/_deploy.yml     # Implements the `deploy` command for cloud deployment.
+
+  # --- Infrastructure & Utilities ---
+  _provision:       ./tasks/_provision.yml  # Implements the `provision` command for infrastructure setup.
+  _verify:          ./tasks/_verify.yml     # Implements the `verify` command to check infrastructure health.
+  _destroy:         ./tasks/_destroy.yml    # Implements the `destroy` command for infrastructure teardown.
+  _update:          ./tasks/_update.yml     # Implements the `deps-update` command.
+  _clean:           ./tasks/_clean.yml      # Implements the `clean` command to remove temporary files.
+
+  # --- AI Assistant ---
+  _thea:            ./tasks/_thea.yml       # Implements all `thea-*` commands for AI-assisted workflows.
+
+  # --- Core Internal Utilities ---
+  _init:            ./tasks/_init.yml       # Implements the hidden `init` task, a dependency for other tasks.
+
+dotenv: [".env"]
+
+tasks:
+  default:
+    desc: "Displays the main project command menu."
+    silent: true
+    cmds:
+      - |
+        echo
+        echo "----------------------------------------------------------------------------"
+        echo "          ✨ THEA Command Menu (Cognitively-Refined) ✨"
+        echo "----------------------------------------------------------------------------"
+        echo "Run \`task <command>\` to execute an action. e.g., \`task test\`"
+        echo
+        echo -e "\033[1m--- 💻 Local Development (Inner Loop) ---\033[0m"
+        echo "    Tasks for the core cycle of coding and local iteration."
+        echo
+        echo -e "  \033[32mtask-start\033[0m   - ACTION:   Initiate a new task (e.g., \`git checkout -b new-feature\`)."
+        echo -e "  \033[32mstatus\033[0m       - VIEW:     Show a summary of local file changes (e.g., \`git status\`)."
+        echo -e "  \033[32mrun\033[0m          - ACTION:   Execute the application locally on your machine."
+        echo -e "  \033[32mcommit\033[0m       - ACTION:   Save all local changes into a new commit (e.g., \`git commit\`)."
+        echo -e "  \033[32mtask-finish\033[0m  - ACTION:   Finalize a task (e.g., create a pull request)."
+        echo
+        echo -e "\033[1m--- 📦 Build & Release Pipeline (Outer Loop) ---\033[0m"
+        echo "    Tasks for building, testing, and deploying the application."
+        echo
+        echo -e "  \033[32mbuild\033[0m        - ACTION:   Compile source code and create a build artifact."
+        echo -e "  \033[32mtest\033[0m         - ACTION:   Run the application's full suite of automated tests."
+        echo -e "  \033[32manalyze\033[0m      - ACTION:   Inspect code for quality, style, and vulnerabilities."
+        echo -e "  \033[32mrelease\033[0m      - ACTION:   Create and publish a new versioned release artifact."
+        echo -e "  \033[32mdeploy\033[0m       - ACTION:   Deploys the application to the cloud."
+        echo
+        echo -e "\033[1m--- ☁️ Infrastructure & Utilities ---\033[0m"
+        echo "    Tasks for managing cloud resources and local housekeeping."
+        echo
+        echo -e "  \033[32mprovision\033[0m    - GUIDE:    Shows setup checklist for cloud infrastructure."
+        echo -e "  \033[32mverify\033[0m       - VIEW:     Check that provisioned infrastructure is healthy."
+        echo -e "  \033[31mdestroy\033[0m      - ACTION:    Shows checklist for tearing down all infrastructure."
+        echo -e "  \033[32mdeps-update\033[0m  - ACTION:   Update third-party dependencies to their latest versions."
+        echo -e "  \033[32mclean\033[0m        - ACTION:   Remove all local temporary files and build artifacts."
+        echo
+        echo -e "\033[1m--- 🤖 AI Assistant ---\033[0m"
+        echo "    Leverage AI to accelerate your workflow and manage assets."
+        echo
+        echo -e "  \033[32mthea-export-codebase\033[0m   - AI:       Package the entire codebase for AI analysis or context."
+        echo -e "  \033[32mthea-prompt-generate\033[0m   - AI:       Generate a custom prompt template for a specific task."
+        echo -e "  \033[32mthea-playbook-generate\033[0m - AI:       Generate a custom, reusable playbook for a complex workflow."
+        echo
+
+  # ============================================================================
+  #  TASK IMPLEMENTATIONS
+  # ============================================================================
+  # CONVENTION: Each task below is a simple facade that calls a task of the
+  # exact same name in its corresponding included file.
+  # ============================================================================
+
+  # --- Local Development (Inner Loop) ---
+  task-start:
+    desc: "ACTION: Initiate a new task (e.g., git checkout -b new-feature)."
+    cmds:
+      - task: _task-start:task-start
+        vars: { CLI_ARGS: '{{.CLI_ARGS}}' }
+
+  status:
+    desc: "VIEW: Show a summary of local file changes (e.g., git status)."
+    cmds:
+      - task: _status:status
+
+  run:
+    desc: "ACTION: Execute the application locally on your machine."
+    cmds:
+      - task: _run:run
+
+  commit:
+    desc: "ACTION: Save all local changes into a new commit (e.g., git commit)."
+    cmds:
+      - task: _commit:commit
+        vars: { CLI_ARGS: '{{.CLI_ARGS}}' }
+
+  task-finish:
+    desc: "ACTION: Finalize a task (e.g., create a pull request)."
+    cmds:
+      - task: _task-finish:task-finish
+
+  # --- Build & Release Pipeline (Outer Loop) ---
+  build:
+    desc: "ACTION: Compile source code and create a build artifact."
+    cmds:
+      - task: _build:build
+
+  test:
+    desc: "ACTION: Run the application's full suite of automated tests."
+    cmds:
+      - task: _test:test
+
+  analyze:
+    desc: "ACTION: Inspect code for quality, style, and vulnerabilities."
+    cmds:
+      - task: _analyze:analyze
+
+  release:
+    desc: "ACTION: Create and publish a new versioned release artifact. (placeholder)"
+    cmds:
+      - echo "Placeholder for release task. This would typically involve tagging and creating a release in your Git provider."
+
+  deploy:
+    desc: "ACTION: Deploys the application to the cloud."
+    cmds:
+      - task: _deploy:deploy
+
+  # --- Infrastructure & Utilities ---
+  provision:
+    desc: "GUIDE: Shows setup checklist for cloud infrastructure."
+    cmds:
+      - task: _provision:provision
+
+  verify:
+    desc: "VIEW: Check that provisioned infrastructure is healthy."
+    cmds:
+      - task: _verify:verify
+
+  destroy:
+    desc: "ACTION: Permanently destroys ALL cloud infrastructure (requires confirmation)."
+    cmds:
+      - task: _destroy:destroy
+
+  deps-update:
+    desc: "ACTION: Update third-party dependencies to their latest versions."
+    cmds:
+      - task: _update:deps-update
+
+  clean:
+    desc: "ACTION: Remove all local temporary files and build artifacts."
+    cmds:
+      - task: _clean:clean
+
+  # --- AI Assistant ---
+  thea-export-codebase:
+    desc: "AI: Package the entire codebase for AI analysis or context."
+    cmds:
+      - task: _thea:thea-export-codebase
+        vars: { CLI_ARGS: '{{.CLI_ARGS}}' }
+
+  thea-prompt-generate:
+    desc: "AI: Generate a custom prompt template for a specific task."
+    cmds:
+      - task: _thea:thea-prompt-generate
+
+  thea-playbook-generate:
+    desc: "AI: Generate a custom, reusable playbook for a complex workflow."
+    cmds:
+      - task: _thea:thea-playbook-generate
+
+  # --- Hidden Utilities ---
+  init:
+    internal: true
+    cmds:
+      - task: _init:init
+  env:
+    internal: true
+    cmds:
+      - task: _init:env
