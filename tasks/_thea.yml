@@ -1,6 +1,13 @@
-# tasks/_thea.yml (STUB)
+# tasks/_thea.yml
+# Implements the high-level AI Assistant commands.
 version: '3'
+
 tasks:
   thea-export-codebase:
+    desc: "(AI) Exports a comprehensive project snapshot for AI analysis."
+    silent: true
     cmds:
-      - echo "INFO Called stub for task 'thea-export-codebase' in file '_thea.yml'"
+      # Call the script, passing all command-line arguments through.
+      - ./scripts/export_codebase.sh {{.CLI_ARGS}}
+
+  # Add other 'thea-' tasks here as they are implemented.
