@@ -11,7 +11,6 @@ tasks:
       - |
         echo
         echo "--> INFO: No 'run' action is defined for this project."
-        echo
         echo "    This repository contains an automation framework and development"
         echo "    environment, not a runnable application."
         echo

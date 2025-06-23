@@ -1,17 +1,11 @@
 # tasks/_task-start.yml
 # Implements the high-level 'task-start' command.
-
 version: '3'
-
-# Includes the git helper library for git-based actions.
-includes:
-  _git: ./_git.yml
 
 tasks:
   task-start:
-    desc: "(Workflow) Starts a new development task by creating a branch."
-    internal: true
+    desc: "(Action) Creates and checks out a new feature branch."
     silent: true
     cmds:
-      - task: _git:create-branch
-        vars: { CLI_ARGS: '{{.CLI_ARGS}}' }
+      # Call the script, passing all command-line arguments through.
+      - ./scripts/start_task.sh {{.CLI_ARGS}}

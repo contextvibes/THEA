@@ -1,7 +1,6 @@
 # tasks/_git.yml
 # This file defines internal helper tasks for shared Git operations.
-# It is used by other task files like _workflow.yml.
-
+# It is used by other task files like _task-start and _task-finish.
 version: '3'
 
 tasks:

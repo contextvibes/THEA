@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # scripts/status.sh
 #
 # WHY: Generates a focused report on "what is new" for the current workspace.
