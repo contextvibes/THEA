@@ -1,6 +1,46 @@
-# tasks/_git.yml (STUB)
+# tasks/_git.yml
+# This file defines internal helper tasks for shared Git operations.
+# It is used by other task files like _workflow.yml.
+
 version: '3'
+
 tasks:
   sync:
+    internal: true
+    desc: "(Action) Syncs the local branch with the remote repository."
+    silent: true
+    preconditions:
+      - sh: '[[ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]]'
+        msg: "Sync command cannot be run on the 'main' branch for safety."
     cmds:
-      - echo "INFO Called stub for task 'sync' in file '_git.yml'"
+      - echo "--> Pulling latest changes from remote (with rebase)..."
+      - git pull --rebase
+      - echo "--> Pushing local changes to remote..."
+      - git push --force-with-lease
+
+  verify-clean:
+    internal: true
+    desc: "(Action) Checks that the git working directory is clean before proceeding."
+    silent: true
+    preconditions:
+      - sh: "git diff --quiet --exit-code"
+        msg: "You have uncommitted changes. Please commit or stash them before proceeding."
+    cmds:
+      - echo "--> Git status is clean. Proceeding..."
+
+  create-branch:
+    internal: true
+    desc: "(Action) Creates and checks out a new Git branch."
+    silent: true
+    cmds:
+      - git checkout -b {{.CLI_ARGS}}
+
+  create-pr:
+    internal: true
+    desc: "(Action) Creates a GitHub pull request from the current branch."
+    silent: true
+    preconditions:
+      - sh: "gh auth status"
+        msg: "GitHub CLI ('gh') is not authenticated. Please run 'gh auth login'."
+    cmds:
+      - gh pr create --fill --web

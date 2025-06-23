@@ -14,11 +14,11 @@ version: '3'
 # ==============================================================================
 includes:
   # --- Local Development (Inner Loop) ---
-  # _task-start:      ./tasks/_task-start.yml # Implements the `task-start` command.
-  _status:          ./tasks/_status.yml     # Implements the `status` command.
-  # _run:             ./tasks/_run.yml        # Implements the `run` command.
-  _commit:          ./tasks/_commit.yml     # Implements the `commit` command.
-  # _task-finish:     ./tasks/_task-finish.yml# Implements the `task-finish` command.
+  _task-start:      ./tasks/_task-start.yml  # Implements the `task-start` command.
+  _status:          ./tasks/_status.yml      # Implements the `status` command.
+  # _run:             ./tasks/_run.yml       # Implements the `run` command.
+  _commit:          ./tasks/_commit.yml      # Implements the `commit` command.
+  _task-finish:     ./tasks/_task-finish.yml # Implements the `task-finish` command.
 
   # # --- Build & Release Pipeline (Outer Loop) ---
   # _build:           ./tasks/_build.yml      # Implements the `build` command to create artifacts.
@@ -31,7 +31,7 @@ includes:
   # _verify:          ./tasks/_verify.yml     # Implements the `verify` command to check infrastructure health.
   # _destroy:         ./tasks/_destroy.yml    # Implements the `destroy` command for infrastructure teardown.
   # _update:          ./tasks/_update.yml     # Implements the `deps-update` command.
-  # _clean:           ./tasks/_clean.yml      # Implements the `clean` command to remove temporary files.
+  _clean:           ./tasks/_clean.yml      # Implements the `clean` command to remove temporary files.
 
   # # --- AI Assistant ---
   # _thea:            ./tasks/_thea.yml       # Implements all `thea-*` commands for AI-assisted workflows.
@@ -95,12 +95,12 @@ tasks:
   # exact same name in its corresponding included file.
   # ============================================================================
 
-  # # --- Local Development (Inner Loop) ---
-  # task-start:
-  #   desc: "ACTION: Initiate a new task (e.g., git checkout -b new-feature)."
-  #   cmds:
-  #     - task: _task-start:task-start
-  #       vars: { CLI_ARGS: '{{.CLI_ARGS}}' }
+  # --- Local Development (Inner Loop) ---
+  task-start:
+    desc: "ACTION: Initiate a new task (e.g., git checkout -b new-feature)."
+    cmds:
+      - task: _task-start:task-start
+        vars: { CLI_ARGS: '{{.CLI_ARGS}}' }
 
   status:
     desc: "VIEW: Show a summary of local file changes (e.g., git status)."
@@ -119,10 +119,10 @@ tasks:
       - task: _commit:commit
         vars: { CLI_ARGS: '{{.CLI_ARGS}}' }
 
-  # task-finish:
-  #   desc: "ACTION: Finalize a task (e.g., create a pull request)."
-  #   cmds:
-  #     - task: _task-finish:task-finish
+  task-finish:
+    desc: "ACTION: Finalize a task (e.g., create a pull request)."
+    cmds:
+      - task: _task-finish:task-finish
 
   # # --- Build & Release Pipeline (Outer Loop) ---
   # build:
@@ -175,10 +175,10 @@ tasks:
   #   cmds:
   #     - task: _update:deps-update
 
-  # clean:
-  #   desc: "ACTION: Remove all local temporary files and build artifacts."
-  #   cmds:
-  #     - task: _clean:clean
+  clean:
+    desc: "ACTION: Remove all local temporary files and build artifacts."
+    cmds:
+      - task: _clean:clean
 
   # # --- AI Assistant ---
   # thea-export-codebase:
