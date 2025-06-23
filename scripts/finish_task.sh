@@ -37,8 +37,9 @@ git pull --rebase origin "$MAIN_BRANCH"
 
 echo ""
 echo "--> Pushing updated branch to remote..."
-# Use --force-with-lease for safety after a rebase
-git push --force-with-lease
+# Use -u to set the upstream branch if it doesn't exist.
+# Use --force-with-lease for safety after a rebase.
+git push -u --force-with-lease
 
 echo ""
 echo "--> Opening browser to create a Pull Request..."
