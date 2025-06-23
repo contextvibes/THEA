@@ -7,7 +7,16 @@ tasks:
     desc: "(AI) Exports a comprehensive project snapshot for AI analysis."
     silent: true
     cmds:
-      # Call the script, passing all command-line arguments through.
       - ./scripts/export_codebase.sh {{.CLI_ARGS}}
 
-  # Add other 'thea-' tasks here as they are implemented.
+  thea-prompt-generate:
+    desc: "(AI) Generate a custom prompt template for a specific task."
+    silent: true
+    cmds:
+      - ./scripts/generate_prompt_menu.sh
+
+  thea-playbook-generate:
+    desc: "(AI) Generate a custom, reusable playbook for a complex workflow."
+    silent: true
+    cmds:
+      - ./scripts/generate_playbook_menu.sh
