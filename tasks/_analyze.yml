@@ -1,6 +1,12 @@
-# tasks/_analyze.yml (STUB)
+# tasks/_analyze.yml
 version: '3'
 tasks:
   analyze:
+    desc: "(Info) Explains that this is a placeholder for code analysis."
+    silent: true
     cmds:
-      - echo "INFO Called stub for task 'analyze' in file '_analyze.yml'"
+      - |
+        echo
+        echo "--> INFO: This is a placeholder for a code analysis task."
+        echo "    The original implementation can be found in the git history if needed."
+        echo

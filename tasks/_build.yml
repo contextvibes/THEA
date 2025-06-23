@@ -1,16 +1,12 @@
 # tasks/_build.yml
-# This file defines the helper tasks for building the application's artifacts,
-# either as a local binary or as a container image.
 version: '3'
-
-# tasks/_build.yml
-
 tasks:
   build:
-    desc: "(Helper) Compiles the Go application into a local binary."
-    internal: true
+    desc: "(Info) Explains that this is a placeholder for a build task."
     silent: true
     cmds:
-      - echo "--> Building Go binary into ./bin/..."
-      - mkdir -p ./bin
-      - go build -v -o ./bin/florbs-go-job-worker ./cmd/main.go
+      - |
+        echo
+        echo "--> INFO: This is a placeholder for a build task."
+        echo "    The original implementation can be found in the git history if needed."
+        echo

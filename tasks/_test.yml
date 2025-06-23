@@ -1,6 +1,12 @@
-# tasks/_test.yml (STUB)
+# tasks/_test.yml
 version: '3'
 tasks:
   test:
+    desc: "(Info) Explains that this is a placeholder for a test suite."
+    silent: true
     cmds:
-      - echo "INFO Called stub for task 'test' in file '_test.yml'"
+      - |
+        echo
+        echo "--> INFO: This is a placeholder for a test suite."
+        echo "    The original implementation can be found in the git history if needed."
+        echo

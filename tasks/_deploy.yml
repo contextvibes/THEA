@@ -1,6 +1,12 @@
-# tasks/_deploy.yml (STUB)
+# tasks/_deploy.yml
 version: '3'
 tasks:
   deploy:
+    desc: "(Info) Explains that this is a placeholder for a deployment task."
+    silent: true
     cmds:
-      - echo "INFO Called stub for task 'deploy' in file '_deploy.yml'"
+      - |
+        echo
+        echo "--> WARNING: This is a placeholder. The real 'deploy' task is destructive."
+        echo "    The original implementation can be found in the git history if needed."
+        echo
