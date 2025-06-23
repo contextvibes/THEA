@@ -1,0 +1,6 @@
+# tasks/_provision.yml (STUB)
+version: '3'
+tasks:
+  provision:
+    cmds:
+      - echo "INFO Called stub for task 'provision' in file '_provision.yml'"

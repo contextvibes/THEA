@@ -1,0 +1,6 @@
+# tasks/_task-start.yml (STUB)
+version: '3'
+tasks:
+  task-start:
+    cmds:
+      - echo "INFO Called stub for task"

@@ -1,0 +1,6 @@
+# tasks/_clean.yml (STUB)
+version: '3'
+tasks:
+  clean:
+    cmds:
+      - echo "INFO Called stub for task 'clean' in file '_clean.yml'"

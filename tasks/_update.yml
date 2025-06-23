@@ -1,0 +1,6 @@
+# tasks/_update.yml (STUB)
+version: '3'
+tasks:
+  deps-update:
+    cmds:
+      - echo "INFO Called stub for task 'deps-update' in file '_update.yml'"

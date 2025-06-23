@@ -1,0 +1,139 @@
+# tasks/_run.yml
+version: '3'
+
+includes:
+  _build: ./_build.yml
+
+tasks:
+  run:
+    desc: "(Workflow) Presents an interactive menu of run modes."
+    silent: true
+    cmds:
+      - |
+        PS3="Please select a run mode: "
+        select opt in \
+          "Run from local source code as ({{.CURRENT_USER}})" \
+          "Run from compiled binary as ({{.CURRENT_USER}})" \
+          "Run in a single container" \
+          "Run all containers for the job" \
+          "Trigger a remote job on Cloud Run" \
+          "Quit"
+        do
+          case $opt in
+            "Run from local source code as ({{.CURRENT_USER}})")
+              task _run:from-code
+              break
+              ;;
+            "Run from compiled binary as ({{.CURRENT_USER}})")
+              task _run:from-binary
+              break
+              ;;
+            "Run in a single container")
+              task _run:container-one
+              break
+              ;;
+            "Run all containers for the job")
+              task _run:container-all
+              break
+              ;;
+            "Trigger a remote job on Cloud Run")
+              task _run:remote-job
+              break
+              ;;
+            "Quit")
+              echo "Aborted."
+              break
+              ;;
+            *) echo "Invalid option $REPLY";;
+          esac
+        done
+
+  # --- Run Implementations ---
+  from-code:
+    dotenv: [".env"]
+    preconditions:
+      - sh: 'test -f ./sa-key.json'
+        msg: "Service account key file './sa-key.json' not found."
+    cmds:
+      - |
+        echo "--> Running Go application from source (go run)..."
+        GOOGLE_APPLICATION_CREDENTIALS=./sa-key.json go run ./cmd/main.go
+
+  from-binary:
+    dotenv: [".env"]
+    preconditions:
+      - sh: 'test -f ./sa-key.json'
+        msg: "Service account key file './sa-key.json' not found."
+    cmds:
+      - task: _build:binary
+      - |
+        echo "--> Running the locally built binary..."
+        GOOGLE_APPLICATION_CREDENTIALS=./sa-key.json ./bin/florbs-go-job-worker
+
+  container-one:
+    vars:
+      GIT_COMMIT:
+        sh: git rev-parse --short HEAD
+      IMAGE_FQN: "{{.ARTIFACT_REGISTRY_REPO}}/{{.CONTAINER_NAME}}"
+    preconditions:
+      - sh: 'test -f ./sa-key.json'
+        msg: "Service account key file './sa-key.json' not found."
+    cmds:
+      - task: _build:container-local
+        vars:
+          IMAGE_FQN:  "{{.IMAGE_FQN}}"
+          GIT_COMMIT: "{{.GIT_COMMIT}}"
+      - |
+        echo "--> Starting single container for CLOUD_RUN_TASK_INDEX={{.CLOUD_RUN_TASK_INDEX}}..."
+        GIT_COMMIT={{.GIT_COMMIT}} ARTIFACT_REGISTRY_REPO={{.ARTIFACT_REGISTRY_REPO}} \
+        docker-compose run --rm --name worker-{{.CLOUD_RUN_TASK_INDEX}} florbs-go-job-worker
+
+  container-all:
+    dotenv: [".env"]
+    vars:
+      GIT_COMMIT:
+        sh: git rev-parse --short HEAD
+      IMAGE_FQN: "{{.ARTIFACT_REGISTRY_REPO}}/{{.CONTAINER_NAME}}"
+    preconditions:
+      - sh: 'test -f ./sa-key.json'
+        msg: "Service account key file './sa-key.json' not found."
+    defer: { task: _run:_stop-containers }
+    cmds:
+      - task: _run:_stop-containers
+      - task: _build:container-local
+        vars:
+          IMAGE_FQN:  "{{.IMAGE_FQN}}"
+          GIT_COMMIT: "{{.GIT_COMMIT}}"
+      - |
+        echo "--> Starting {{.CLOUD_RUN_TASK_COUNT}} job containers in the background..."
+        for i in $(seq 0 $(expr {{.CLOUD_RUN_TASK_COUNT}} - 1)); do
+          GIT_COMMIT={{.GIT_COMMIT}} ARTIFACT_REGISTRY_REPO={{.ARTIFACT_REGISTRY_REPO}} \
+          docker-compose run --rm -d --name worker-$i -e CLOUD_RUN_TASK_INDEX=$i florbs-go-job-worker
+        done
+      - echo -e "\n\033[0;32m[  OK  ]\033[0m All containers started. Streaming logs now (press Ctrl+C to stop)..."
+      - docker-compose logs -f --tail="all"
+
+  remote-job:
+    dotenv: [".env"]
+    vars:
+      TASK_COUNT:
+        sh: echo "{{.TARGET_USER_EMAILS}}" | tr ',' '\n' | wc -l
+      ENV_VARS_STRING: "^;^TARGET_USER_EMAILS={{.TARGET_USER_EMAILS}};GCS_BUCKET_NAME={{.GCS_BUCKET_NAME}};TARGET_PRINCIPAL_SA={{.TARGET_PRINCIPAL_SA}};GOOGLE_CLOUD_PROJECT={{.COMPUTE_PROJECT_ID}};LOG_LEVEL={{.LOG_LEVEL}}"
+    cmds:
+      - |
+        echo "--> Triggering remote Cloud Run Job '{{.CLOUD_RUN_JOB_NAME}}' with {{.TASK_COUNT}} tasks..."
+        gcloud run jobs update {{.CLOUD_RUN_JOB_NAME}} \
+          --region {{.GCP_REGION}} \
+          --project {{.COMPUTE_PROJECT_ID}} \
+          --tasks {{.TASK_COUNT}} \
+          --parallelism {{.CLOUD_RUN_TASK_PARALISM}} \
+          --update-env-vars="{{.ENV_VARS_STRING}}" \
+          --wait
+
+  _stop-containers:
+    internal: true
+    desc: "(Internal) Stops and removes all docker-compose services."
+    silent: true
+    cmds:
+      - echo -e "\n\033[0;33m--> Shutting down and removing containers...\033[0m"
+      - docker-compose down --remove-orphans

@@ -1,0 +1,6 @@
+# tasks/_verify.yml (STUB)
+version: '3'
+tasks:
+  verify:
+    cmds:
+      - echo "INFO Called stub for task 'verify' in file '_verify.yml'"

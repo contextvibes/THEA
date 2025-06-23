@@ -1,0 +1,6 @@
+# tasks/_run.yml (STUB)
+version: '3'
+tasks:
+  run:
+    cmds:
+      - echo "INFO Called stub for task 'run' in file '_run.yml'"

@@ -1,0 +1,6 @@
+# tasks/_task-finish.yml (STUB)
+version: '3'
+tasks:
+  task-finish:
+    cmds:
+      - echo "INFO Called stub for task 'task-finish' in file '_task-finish.yml'"

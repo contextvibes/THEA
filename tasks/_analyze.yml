@@ -1,0 +1,6 @@
+# tasks/_analyze.yml (STUB)
+version: '3'
+tasks:
+  analyze:
+    cmds:
+      - echo "INFO Called stub for task 'analyze' in file '_analyze.yml'"

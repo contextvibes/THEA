@@ -1,0 +1,6 @@
+# tasks/_git.yml (STUB)
+version: '3'
+tasks:
+  sync:
+    cmds:
+      - echo "INFO Called stub for task 'sync' in file '_git.yml'"

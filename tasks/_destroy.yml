@@ -1,0 +1,6 @@
+# tasks/_destroy.yml (STUB)
+version: '3'
+tasks:
+  destroy:
+    cmds:
+      - echo "INFO Called stub for task 'destroy' in file '_destroy.yml'"

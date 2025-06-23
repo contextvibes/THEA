@@ -1,0 +1,8 @@
+# tasks/_status.yml
+version: '3'
+tasks:
+  status:
+    desc: "(Action) Saves a 'what's new' report to a file and shows a summary."
+    silent: true
+    cmds:
+      - ./scripts/status.sh

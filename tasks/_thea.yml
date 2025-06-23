@@ -1,0 +1,6 @@
+# tasks/_thea.yml (STUB)
+version: '3'
+tasks:
+  thea-export-codebase:
+    cmds:
+      - echo "INFO Called stub for task 'thea-export-codebase' in file '_thea.yml'"
