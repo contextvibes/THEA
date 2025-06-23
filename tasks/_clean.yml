@@ -1,15 +1,10 @@
 # tasks/_clean.yml
-# This file defines the helper task for cleaning the local project.
-
+# Implements the high-level 'clean' command.
 version: '3'
 
 tasks:
   clean:
-    desc: "(Action) Removes all generated contextvibes report files."
+    desc: "Cleans generated files and interactively prompts for branch cleanup."
     silent: true
     cmds:
-      # The -f flag ensures the command doesn't fail if no files exist.
-      - cmd: rm -f contextvibes.md
-      - cmd: rm -f contextvibes_ai_trace.log
-      - cmd: rm -f contextvibes_status.md
-        silent: false # Show the command being run for clarity.
+      - ./scripts/clean.sh
