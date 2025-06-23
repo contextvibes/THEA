@@ -1,6 +1,16 @@
-# tasks/_build.yml (STUB)
+# tasks/_build.yml
+# This file defines the helper tasks for building the application's artifacts,
+# either as a local binary or as a container image.
 version: '3'
+
+# tasks/_build.yml
+
 tasks:
   build:
+    desc: "(Helper) Compiles the Go application into a local binary."
+    internal: true
+    silent: true
     cmds:
-      - echo "INFO Called stub for task 'build' in file '_build.yml'"
+      - echo "--> Building Go binary into ./bin/..."
+      - mkdir -p ./bin
+      - go build -v -o ./bin/florbs-go-job-worker ./cmd/main.go

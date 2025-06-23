@@ -1,6 +1,12 @@
-# tasks/_verify.yml (STUB)
+# tasks/_verify.yml
 version: '3'
 tasks:
   verify:
+    desc: "(Info) Explains that this task checks infrastructure health."
+    silent: true
     cmds:
-      - echo "INFO Called stub for task 'verify' in file '_verify.yml'"
+      - |
+        echo
+        echo "--> INFO: This task is intended to verify that provisioned infrastructure is healthy."
+        echo "    The original implementation can be found in the git history if needed."
+        echo

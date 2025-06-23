@@ -1,6 +1,12 @@
-# tasks/_destroy.yml (STUB)
+# tasks/_destroy.yml
 version: '3'
 tasks:
   destroy:
+    desc: "(Info) Explains that this task is a placeholder for infrastructure teardown."
+    silent: true
     cmds:
-      - echo "INFO Called stub for task 'destroy' in file '_destroy.yml'"
+      - |
+        echo
+        echo "--> WARNING: This is a placeholder. The real 'destroy' task is destructive."
+        echo "    The original implementation can be found in the git history if needed."
+        echo
