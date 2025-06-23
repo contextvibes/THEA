@@ -16,7 +16,7 @@ includes:
   # --- Local Development (Inner Loop) ---
   _task-start:      ./tasks/_task-start.yml  # Implements the `task-start` command.
   _status:          ./tasks/_status.yml      # Implements the `status` command.
-  # _run:             ./tasks/_run.yml       # Implements the `run` command.
+  _run:             ./tasks/_run.yml       # Implements the `run` command.
   _commit:          ./tasks/_commit.yml      # Implements the `commit` command.
   _task-finish:     ./tasks/_task-finish.yml # Implements the `task-finish` command.
 
@@ -107,11 +107,10 @@ tasks:
     cmds:
       - task: _status:status
 
-  # run:
-  #   desc: "ACTION: Execute the application locally on your machine."
-  #   deps: [init]
-  #   cmds:
-  #     - task: _run:run
+  run:
+    desc: "ACTION: Execute the application locally on your machine."
+    cmds:
+      - task: _run:run
 
   commit:
     desc: "ACTION: Save all local changes into a new commit (e.g., git commit)."
@@ -147,26 +146,22 @@ tasks:
 
   # deploy:
   #   desc: "ACTION: Deploys the application to the cloud."
-  #   deps: [init]
   #   cmds:
   #     - task: _deploy:deploy
 
   # # --- Infrastructure & Utilities ---
   # provision:
   #   desc: "GUIDE: Shows setup checklist for cloud infrastructure."
-  #   deps: [init]
   #   cmds:
   #     - task: _provision:provision
 
   # verify:
   #   desc: "VIEW: Check that provisioned infrastructure is healthy."
-  #   deps: [init]
   #   cmds:
   #     - task: _verify:verify
 
   # destroy:
   #   desc: "ACTION: Permanently destroys ALL cloud infrastructure (requires confirmation)."
-  #   deps: [init]
   #   cmds:
   #     - task: _destroy:destroy
 
