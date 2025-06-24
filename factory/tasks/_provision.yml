@@ -1,0 +1,12 @@
+# tasks/_provision.yml
+version: '3'
+tasks:
+  provision:
+    desc: "(Info) Explains that this task provides a setup guide."
+    silent: true
+    cmds:
+      - |
+        echo
+        echo "--> INFO: This task is intended to show a checklist for provisioning cloud infrastructure."
+        echo "    The original implementation can be found in the git history if needed."
+        echo

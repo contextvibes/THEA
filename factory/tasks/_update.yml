@@ -1,0 +1,12 @@
+# tasks/_update.yml
+version: '3'
+tasks:
+  deps-update:
+    desc: "(Info) Explains that this task updates third-party dependencies."
+    silent: true
+    cmds:
+      - |
+        echo
+        echo "--> INFO: This task is intended to update third-party dependencies."
+        echo "    The original implementation can be found in the git history if needed."
+        echo
