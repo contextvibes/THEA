@@ -19,10 +19,19 @@
     nodePackages.markdownlint-cli # A linter to enforce standards in Markdown files.
 
     # --- Essential Utilities ---
-    git  # The version control system for managing source code.
-    gh   # The official GitHub CLI for interacting with GitHub from the terminal.
-    jq   # A command-line JSON processor, useful for scripting.
+    git # The version control system for managing source code.
+    gh # The official GitHub CLI for interacting with GitHub from the terminal.
     tree # A utility to display directory structures.
+    file # For inspecting file types (fixes the immediate error)
+    shellcheck # To find bugs and errors in shell scripts
+    shfmt # To automatically format shell scripts
+
+    # --- Interactive UI/Menus ---
+    gum # For creating beautiful, modern interactive menus and prompts
+
+    # --- Data Processing  ---
+    jq # The standard tool for parsing and handling JSON
+    yq # The standa
   ];
 
   # Sets global environment variables for the Nix shell. This is empty for now.

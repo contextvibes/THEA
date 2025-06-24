@@ -1,10 +1,10 @@
 #!/bin/bash
-# scripts/start_task.sh (FINAL, STATE-AWARE VERSION)
+# scripts/start_task.sh (VERSION 2 - WITH BRANCH NAME VALIDATION)
 #
 # WHY:  Handles starting a new feature branch safely and intelligently.
-# WHAT: Checks for uncommitted changes. If found, it asks the user for
-#       permission to stash them and carry them over to the new branch.
-# HOW:  Uses git commands and an interactive 'read' prompt.
+# WHAT: Checks for uncommitted changes and validates the new branch name
+#       against the project's conventions before creating it.
+# HOW:  Uses git commands, an interactive 'read' prompt, and regex matching.
 
 set -e
 
@@ -24,7 +24,7 @@ if ! git diff --quiet --exit-code; then
   fi
 fi
 
-# --- Phase 2: Branch Creation ---
+# --- Phase 2: Branch Creation & Validation ---
 # Validate that a branch name was provided.
 if [ -z "$1" ]; then
   echo "❌ ERROR: You must provide a name for the new feature branch."
@@ -35,6 +35,17 @@ if [ -z "$1" ]; then
 fi
 
 BRANCH_NAME=$1
+BRANCH_PATTERN="^((feature|fix|docs|format)/.+)$"
+
+# --- NEW: Validate the branch name against the pattern ---
+if [[ ! "$BRANCH_NAME" =~ $BRANCH_PATTERN ]]; then
+  echo "❌ ERROR: Invalid branch name: '$BRANCH_NAME'"
+  echo "   Branches must follow the pattern: type/description"
+  echo "   Valid types are: feature, fix, docs, format"
+  echo "   Example: task task-start -- feature/new-context-menu"
+  if [ "$STASH_PERFORMED" = true ]; then git stash pop; fi
+  exit 1
+fi
 
 echo "--> Creating and switching to new branch '$BRANCH_NAME'..."
 git checkout -b "$BRANCH_NAME"
