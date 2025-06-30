@@ -11,11 +11,50 @@ readonly PROMPTS_DIR="factory/prompts"
 readonly MAIN_BRANCH="main"
 # WHAT: Defines the standard branch naming convention for the project.
 # WHY:  Provides a single source of truth for all scripts that need to
-#       validate branch names (e.g., start_task, clean).
-readonly BRANCH_PATTERN="^((feature|fix|docs|style|refactor|test|chore|factory)/.+)$"
+#       validate branch names (e.g., start_task, commit, clean).
+readonly BRANCH_PATTERN="^((feature|fix|docs|style|refactor|test|chore|factory)/.+/.+)$"
 
 
 # --- Shared Functions ---
+
+# ---
+# WHAT:  Checks if the current branch is the main branch and exits if it is.
+# WHY:   A critical safety guard to prevent direct modifications or operations
+#        on the primary branch, enforcing a feature-branch workflow.
+# USAGE: prevent_action_on_main_branch "commit"
+# ---
+prevent_action_on_main_branch() {
+    local command_name="$1"
+    if [[ "$(git rev-parse --abbrev-ref HEAD)" == "$MAIN_BRANCH" ]]; then
+        gum style --border normal --margin "1" --padding "1 2" --border-foreground 99 "❌ ERROR: The '$command_name' command cannot be run on the '$MAIN_BRANCH' branch."
+        echo "   Please use 'task task-start' to create a feature branch first."
+        exit 1
+    fi
+}
+
+# ---
+# WHAT:  Checks if the current branch name complies with the project's standard.
+# WHY:   This enforces a consistent branch naming strategy across the repository,
+#        which improves organization and enables further automation.
+# USAGE: validate_current_branch_compliance
+# ---
+validate_current_branch_compliance() {
+    local current_branch
+    current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+    # The main branch is exempt from this pattern check.
+    if [[ "$current_branch" == "$MAIN_BRANCH" ]]; then
+        return 0
+    fi
+
+    if [[ ! "$current_branch" =~ $BRANCH_PATTERN ]]; then
+        gum style --border normal --margin "1" --padding "1 2" --border-foreground 99 "❌ ERROR: Invalid branch name: '$current_branch'"
+        echo "   Your branch name does not follow the project's naming convention." >&2
+        echo "   It must be in the format: type/scope/short-description-in-kebab-case" >&2
+        echo "   Example: feature/SFB-123/add-new-api" >&2
+        exit 1
+    fi
+}
 
 # WHAT: A user-friendly check for uncommitted changes. If the repo is dirty,
 #       it interactively prompts the user to stash them.
@@ -26,7 +65,7 @@ readonly BRANCH_PATTERN="^((feature|fix|docs|style|refactor|test|chore|factory)/
 prompt_to_stash_if_dirty() {
     if ! git diff --quiet --exit-code; then
         gum style --border normal --margin "1" --padding "1 2" --border-foreground 212 "⚠️ You have uncommitted changes."
-        if gum confirm "Stash them and bring them to the new branch?"; then
+        if gum confirm "Stash them and continue?"; then
             git stash
             echo "true"
             return
