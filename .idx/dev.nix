@@ -1,118 +1,85 @@
+# This file defines the development environment for a Firebase Studio workspace using Nix.
+# It specifies all the packages, services, and editor extensions needed for the project.
 { pkgs, ... }:
+
+let
+  # Imports the custom Nix derivation for the 'contextvibes' tool from a separate file.
+  # This declarative approach makes the tool a first-class package in the environment,
+  # which is more reproducible and cacheable than installing it with an imperative script.
+  contextvibes = import ./contextvibes.nix { pkgs = pkgs; };
+in
 {
-  # Specifies the Nixpkgs channel to ensure a reproducible package set across machines.
+  # Specifies the Nixpkgs channel to use. Pinning to a specific channel like "stable-25.05"
+  # ensures that everyone on the team gets the exact same package versions, leading to a
+  # highly reproducible environment.
   channel = "stable-25.05";
 
   # Defines the packages to be installed in the development environment.
+  # Packages are grouped by function for better readability.
   packages = with pkgs; [
-    # --- Core Dependency for Tooling ---
-    # The Go toolchain is required to build and install Go-based CLI tools,
-    # such as the 'contextvibes' CLI installed in the onCreate hook below.
-    go
+    # --- Core Language Toolchains ---
+    go # The Go compiler and toolchain.
+    gopls # The official Go language server for IDE features.
+    delve # The standard debugger for Go.
+    nodejs # The JavaScript runtime, required for some linters.
 
-    # --- Project Automation ---
-    # A task runner that uses a 'Taskfile.yml' to automate common project commands.
-    go-task
+    # --- Project Automation & Task Running ---
+    go-task # A task runner that uses 'Taskfile.yml' to automate common commands.
 
-    # --- Code Quality & Linting ---
-    nodejs # The JavaScript runtime, required by markdownlint-cli.
-    nodePackages.markdownlint-cli # A linter to enforce standards in Markdown files.
+    # --- Code Quality & Formatting ---
+    shellcheck # Linter for finding bugs in shell scripts.
+    shfmt # Auto-formatter for shell scripts.
+    nodePackages.markdownlint-cli # Linter to enforce standards in Markdown files.
 
-    # --- Essential Utilities ---
+    # --- Data Processing & CLI Tools ---
+    jq # A command-line JSON processor.
+    yq-go # A portable command-line YAML processor (Go version).
+    gum # A tool for creating glamorous shell scripts and interactive menus.
+
+    # --- Version Control & Essential Utilities ---
     git # The version control system for managing source code.
-    gh # The official GitHub CLI for interacting with GitHub from the terminal.
-    tree # A utility to display directory structures.
-    file # For inspecting file types (fixes the immediate error)
-    shellcheck # To find bugs and errors in shell scripts
-    shfmt # To automatically format shell scripts
+    gh # The official GitHub CLI for interacting with GitHub.
+    tree # A utility to display directory structures as a tree.
+    file # A utility to determine file types.
 
-    # --- Interactive UI/Menus ---
-    gum # For creating beautiful, modern interactive menus and prompts
-
-    # --- Data Processing  ---
-    jq # The standard tool for parsing and handling JSON
-    yq # The standa
+    # --- Custom Project Tools ---
+    contextvibes # The custom-built 'contextvibes' CLI tool, managed by its own Nix file.
   ];
 
-  # Sets global environment variables for the Nix shell. This is empty for now.
+  # Sets global environment variables for the Nix shell.
   env = { };
 
   # Configures the IDX workspace environment.
   idx = {
-    # Specifies VS Code extensions to install automatically for a better IDE experience.
+    # Specifies VS Code extensions to install automatically.
+    # This ensures a consistent and fully-featured editor experience for all developers.
     extensions = [
-      # Provides syntax highlighting and management features for Dockerfiles.
-      "ms-azuretools.vscode-docker"
+      # --- Core Language & Framework Support ---
+      "golang.go" # Official Go language support.
+      "task.vscode-task" # Adds support for Go Task ('Taskfile.yml').
 
-      # Integrates GitHub pull requests and issues directly into the editor.
-      "GitHub.vscode-pull-request-github"
+      # --- Code Quality & Linting ---
+      "DavidAnson.vscode-markdownlint" # Integrates markdownlint into the editor.
+      "timonwong.shellcheck" # Integrates shellcheck for live linting of shell scripts.
 
-      # Lints Markdown files to ensure consistent formatting.
-      "DavidAnson.vscode-markdownlint"
+      # --- Version Control ---
+      "GitHub.vscode-pull-request-github" # Integrates GitHub PRs and issues.
+      "eamodio.gitlens" # Supercharges the Git capabilities built into VS Code.
     ];
-
-    # Defines lifecycle hooks that run at different stages of the workspace's life.
-    workspace = {
-      # Runs only ONCE when the workspace is first created to handle initial setup.
-      onCreate = {
-        installContextVibesCli = ''
-          # This script installs a project-specific tool not available in Nixpkgs.
-          echo ">>> Setting up ContextVibes CLI..."
-          LOCAL_BIN_DIR="$(pwd)/bin"
-          mkdir -p "$LOCAL_BIN_DIR"
-          
-          # Use GOBIN to direct 'go install' to the local ./bin directory.
-          export GOBIN="$LOCAL_BIN_DIR"
-          echo "Installing contextvibes@v0.2.0 into $GOBIN..."
-          
-          # Install a specific, known-good version for reproducibility.
-          if go install github.com/contextvibes/cli/cmd/contextvibes@v0.2.0; then
-            echo "✅ Successfully installed contextvibes to $GOBIN/contextvibes"
-            chmod +x "$GOBIN/contextvibes"
-          else
-            # Provide a clear, actionable error message on failure.
-            echo "❌ ERROR: Failed to install contextvibes. Check Go environment and network."
-            exit 1 # Halt further onCreate scripts on failure.
-          fi
-          
-          unset GOBIN
-        '';
-      };
-
-      # Runs EVERY TIME the workspace is started to validate the environment.
-      onStart = {
-        checkContextVibes = ''
-          # This script validates that the ContextVibes CLI is installed and executable.
-          echo ">>> Verifying ContextVibes CLI installation..."
-          EXE_PATH="$(pwd)/bin/contextvibes"
-
-          # Verify that the executable file exists.
-          if [ ! -f "$EXE_PATH" ]; then
-            echo "⚠️ ContextVibes CLI not found at $EXE_PATH. Run the 'onCreate' hook if this is a new workspace."
-            exit 1
-          fi
-
-          # Verify that the file has execute permissions.
-          if [ ! -x "$EXE_PATH" ]; then
-            echo "❌ ERROR: Found contextvibes at $EXE_PATH, but it is not executable. Attempting to fix..."
-            chmod +x "$EXE_PATH" || exit 1
-          fi
-
-          # Verify that the tool is functional by running its version command.
-          if VERSION_OUTPUT=$("$EXE_PATH" version); then
-            echo "✅ ContextVibes CLI is ready. Version: $VERSION_OUTPUT"
-          else
-            echo "❌ ERROR: ContextVibes CLI is present but the 'version' command failed."
-            exit 1
-          fi
-        '';
-      };
-    };
-
-    # Configures web previews for the workspace.
-    previews = {
-      # Previews are disabled as this is primarily a CLI-focused environment.
-      enable = false;
-    };
   };
+
+  # Note on Lifecycle Hooks (`onCreate`, `onStart`):
+  # This configuration intentionally omits lifecycle hooks for package installation,
+  # preferring the declarative `packages` list. This Nix-native approach ensures
+  # reproducibility and leverages caching for faster workspace startups.
+  #
+  # Hooks can still be useful for one-time actions, like initializing a project or
+  # displaying a welcome message. For example:
+  #
+  # idx.workspace.onCreate = [
+  #   ''
+  #     echo "Welcome to the project! Your tools are ready." | gum format -t "code"
+  #     echo "Run 'task --list' to see available commands." | gum format -t "code"
+  #   ''
+  # ];
 }

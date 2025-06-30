@@ -1,12 +1,9 @@
-# tasks/_deploy.yml
+# factory/tasks/_deploy.yml
 version: '3'
 tasks:
   deploy:
-    desc: "(Info) Explains that this is a placeholder for a deployment task."
+    desc: "ACTION: Deploys the application to the cloud (Not Yet Implemented)."
+    long: "This is a placeholder for deploying a compiled binary to a service like Google Cloud Run."
     silent: true
     cmds:
-      - |
-        echo
-        echo "--> WARNING: This is a placeholder. The real 'deploy' task is destructive."
-        echo "    The original implementation can be found in the git history if needed."
-        echo
+      - gum style --bold --foreground 212 "Placeholder for 'deploy'. A real implementation would use 'gcloud run deploy' or similar."

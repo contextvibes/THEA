@@ -1,14 +1,16 @@
-# tasks/_context.yml
-# WHAT: This file is the facade for all context-generation commands.
-# WHY:  It provides a single, consistent helper task that forwards all
-#       arguments to the main context controller script.
-
+# factory/tasks/_context.yml
 version: '3'
 
 tasks:
-  # This single helper task is called by all `context:*` tasks in the root Taskfile.
-  # It receives the specific mode (e.g., 'commit', 'export-code') via CLI_ARGS.
-  helper:
-    internal: true
+  context:
+    desc: "VIEW: Generate context for a specific goal (commit, pr, etc.)."
+    long: |
+      Runs the main context generation script.
+
+      Usage:
+        task context          - Shows an interactive menu to choose the context type.
+        task context -- <type> - Directly generates the specified context (e.g., 'commit', 'pr').
+    silent: true
     cmds:
-      - ./scripts/context.sh {{.CLI_ARGS}}
+      - chmod +x -R ./factory/scripts/context*
+      - ./factory/scripts/context.sh {{.CLI_ARGS}}

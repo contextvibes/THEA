@@ -1,16 +1,13 @@
-# tasks/_run.yml
-# Implements the 'run' command to display an informational message.
-
+# factory/tasks/_run.yml
 version: '3'
 
 tasks:
   run:
-    desc: "(Info) Explains why there is no local run command for this project."
+    desc: "ACTION: Execute the application locally on your machine (Not Yet Implemented)."
+    long: |
+      This is a placeholder for running a compiled application locally.
+      A full implementation would likely execute a binary from the './bin' directory
+      after a successful 'task build'.
     silent: true
     cmds:
-      - |
-        echo
-        echo "--> INFO: No 'run' action is defined for this project."
-        echo "    This repository contains an automation framework and development"
-        echo "    environment, not a runnable application."
-        echo
+      - gum style --bold --foreground 212 "Placeholder for 'run'. A real implementation would execute the compiled binary, e.g., './bin/cloud-run-api'."

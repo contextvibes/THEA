@@ -1,19 +1,9 @@
-# tasks/_release.yml (PLACEHOLDER)
-# This file defines the placeholder task for creating a new versioned release.
+# factory/tasks/_release.yml
 version: '3'
-
 tasks:
   release:
-    desc: "(Info) Explains that this is a placeholder for the release process."
-    # This task is internal because the user-facing command is in the root Taskfile.
-    internal: true
+    desc: "ACTION: Creates and publishes a new versioned release artifact (Not Yet Implemented)."
+    long: "This is a placeholder for creating a git tag, building binaries, and creating a GitHub Release."
     silent: true
     cmds:
-      - |
-        echo
-        echo "--> INFO: This is a placeholder for the 'release' task."
-        echo "    The full release process, including building and publishing artifacts,"
-        echo "    will be implemented here."
-        echo
-        echo "    It would receive arguments like: {{.CLI_ARGS}}"
-        echo
+      - gum style --bold --foreground 212 "Placeholder for 'release'. A real implementation would automate git tagging and GitHub releases."

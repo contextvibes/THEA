@@ -1,12 +1,11 @@
-# tasks/_test.yml
+# factory/tasks/_test.yml
 version: '3'
+
 tasks:
   test:
-    desc: "(Info) Explains that this is a placeholder for a test suite."
+    desc: "ACTION: Runs the full suite of automated tests for all Go modules."
+    long: "Finds all Go modules and runs 'go test -v -cover ./...' for each one."
     silent: true
     cmds:
-      - |
-        echo
-        echo "--> INFO: This is a placeholder for a test suite."
-        echo "    The original implementation can be found in the git history if needed."
-        echo
+      - chmod +x ./factory/scripts/test.sh
+      - ./factory/scripts/test.sh

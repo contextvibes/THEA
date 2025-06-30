@@ -1,10 +1,10 @@
-# tasks/_task-finish.yml
-# Implements the high-level 'task-finish' command.
+# factory/tasks/_task-finish.yml
 version: '3'
 
 tasks:
   task-finish:
-    desc: "(Action) Syncs the branch and opens a browser to create a PR."
+    desc: "Syncs the current branch and opens a browser to create a PR."
     silent: true
     cmds:
-      - ./scripts/finish_task.sh
+      - chmod +x ./factory/scripts/task_finish.sh
+      - ./factory/scripts/task_finish.sh

@@ -1,12 +1,11 @@
-# tasks/_analyze.yml
+# factory/tasks/_analyze.yml
 version: '3'
+
 tasks:
   analyze:
-    desc: "(Info) Explains that this is a placeholder for code analysis."
+    desc: "ACTION: Inspects code for quality, style, and vulnerabilities."
+    long: "Finds all Go modules and runs 'golangci-lint run' for each one."
     silent: true
     cmds:
-      - |
-        echo
-        echo "--> INFO: This is a placeholder for a code analysis task."
-        echo "    The original implementation can be found in the git history if needed."
-        echo
+      - chmod +x ./factory/scripts/analyze.sh
+      - ./factory/scripts/analyze.sh

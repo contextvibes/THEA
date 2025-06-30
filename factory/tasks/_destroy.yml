@@ -1,12 +1,9 @@
-# tasks/_destroy.yml
+# factory/tasks/_destroy.yml
 version: '3'
 tasks:
   destroy:
-    desc: "(Info) Explains that this task is a placeholder for infrastructure teardown."
+    desc: "Destroys all provisioned cloud infrastructure (Not Yet Implemented)."
+    long: "This is a placeholder for tearing down all cloud resources created by the 'provision' task."
     silent: true
     cmds:
-      - |
-        echo
-        echo "--> WARNING: This is a placeholder. The real 'destroy' task is destructive."
-        echo "    The original implementation can be found in the git history if needed."
-        echo
+      - gum style --bold --foreground 212 "Placeholder for 'destroy'. A real implementation would use 'terraform destroy' or similar."
