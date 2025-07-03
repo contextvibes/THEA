@@ -50,3 +50,4 @@ inbox/*
 # But DO NOT ignore the README.md explaining the inbox's purpose
 !inbox/README.md
 notes.md
+context_*.md
