@@ -10,7 +10,7 @@
 
   // MD024/no-duplicate-heading: No duplicate headings in the same document.
   // "MD024": { "siblings_only": true }, // Allow duplicate headings if not at the same level. Useful for changelogs.
-                                      // Let's keep it simple for now and allow duplicates if needed.
+  // Let's keep it simple for now and allow duplicates if needed.
   "MD024": false, // Disable for now, Scribe/Canon can fine-tune
 
   // MD025/single-title/single-h1: Document should begin with a single top-level heading.
@@ -27,7 +27,7 @@
   "MD033": false,
 
   // MD041/first-line-heading/first-line-h1: First line in file should be a top-level heading.
-  "MD041": false // Disable for now, not all our docs start with H1 (e.g. .idx/airules.md)
+  "MD041": false, // Disable for now, not all our docs start with H1 (e.g. .idx/airules.md)
 }
 // For a full list of rules and configuration options, see:
 // https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md

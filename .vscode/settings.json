@@ -1,36 +1,113 @@
 {
+  // =========================================================================
+  // IDX AI Features
+  // Settings for Firebase's integrated AI code assistance.
+  // =========================================================================
   "IDX.aI.enableInlineCompletion": true,
   "IDX.aI.enableCodebaseIndexing": true,
-  "terminal.integrated.localEchoLatencyThreshold": -1,
-  "terminal.integrated.localEchoEnabled": "off",
-  "terminal.integrated.fontSize": 13,
-  "workbench.startupEditor": "none",
-  "editor.fontFamily": "JetBrains Mono, Menlo, Monaco, Courier New, monospace",
-  "editor.fontWeight": "normal",
-  "editor.fontSize": 13,
-  "editor.lineHeight": 1.5,
-  "editor.letterSpacing": 0,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.markdownlint": "always"
-  },
-  "debug.console.fontSize": 13,
-  "window.commandCenter": false,
-  "window.autoDetectColorScheme": true,
-  "inlineChat.mode": "preview",
-  "git.enableSmartCommit": true,
-  "git.autofetch": true,
-  "editor.wordWrap": "on",
-  "files.watcherExclude": {
-    "**/.cache/**": true,
-    "**/.git/**": true,
-    "**/node_modules/**": true
-  },
-  "go.useLanguageServer": true,
-  "workbench.activityBar.location": "top",
-  "workbench.colorTheme": "Monokai",
-  "workbench.iconTheme": "vs-seti",
-  "workbench.layoutControl.enabled": false,
+  // =========================================================================
+  // Workbench: General UI & Behavior
+  // Controls the overall appearance, layout, and behavior of the VS Code window.
+  // =========================================================================
+  "workbench.startupEditor": "none", // Don't open a "welcome" page on startup.
+  "workbench.layoutControl.enabled": false, // Hides the layout control buttons (split view, etc.).
+  "window.commandCenter": false, // Hides the command center from the title bar for a cleaner look.
+  "workbench.activityBar.location": "top", // Moves the activity bar (files, search, git) to the top.
+  "breadcrumbs.enabled": true, // Shows the file path at the top of the editor for easy navigation.
+  // =========================================================================
+  // Workbench: Theming & Colors
+  // Defines the visual theme and colors for the UI.
+  // =========================================================================
+  "workbench.iconTheme": "monospace", // Sets the theme for file and folder icons.
   "workbench.preferredDarkColorTheme": "Tomorrow Night Blue",
   "workbench.preferredLightColorTheme": "Monospace Light",
-  "files.insertFinalNewline": true,
+  "window.autoDetectColorScheme": true, // Automatically switch between light/dark themes based on OS settings.
+  // =========================================================================
+  // Editor: Font & Text Rendering
+  // Controls how text is displayed in the editor for maximum readability.
+  // =========================================================================
+  "editor.fontFamily": "JetBrains Mono, Menlo, Monaco, Courier New, monospace",
+  "editor.fontSize": 13,
+  "editor.fontWeight": "normal",
+  "editor.lineHeight": 1.5, // A value of 1.5 provides comfortable spacing between lines.
+  "editor.letterSpacing": 0,
+  "editor.fontLigatures": true, // Enables font ligatures (e.g., turns '=>' into a single arrow symbol).
+  // =========================================================================
+  // Editor: Visual Aids & Guides
+  // Settings that help visualize code structure and context.
+  // =========================================================================
+  "editor.renderWhitespace": "boundary", // Shows whitespace characters, but not between words.
+  "editor.guides.highlightActiveIndentation": true, // Highlights the active indentation guide.
+  "editor.bracketPairColorization.enabled": true, // Colors matching brackets to easily identify code blocks.
+  "editor.renderLineHighlight": "gutter", // Highlights the current line number in the gutter, not the whole line.
+  "editor.minimap.enabled": true, // Shows a high-level overview of your code on the side.
+  // =========================================================================
+  // Editor: Behavior & Actions
+  // Controls how the editor behaves on user actions like typing, pasting, and saving.
+  // =========================================================================
+  "editor.wordWrap": "on", // Wraps long lines of code instead of requiring horizontal scrolling.
+  "editor.linkedEditing": true, // Automatically updates the closing tag when you rename an opening HTML/XML tag.
+  "editor.formatOnPaste": true, // Automatically formats code when you paste it.
+  "editor.formatOnSave": true, // Formats the entire file on save.
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // =========================================================================
+  // Editor: Code Completion & IntelliSense
+  // Enhances code completion, suggestions, and inline help.
+  // =========================================================================
+  "editor.suggest.showStatusBar": true, // Shows the status of suggestions in the bottom status bar.
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off", // Disables suggestions inside comments.
+    "strings": "off" // Disables suggestions inside strings.
+  },
+  // =========================================================================
+  // File Management & Explorer
+  // Settings for saving files and how they are displayed in the explorer.
+  // =========================================================================
+  "files.autoSave": "onFocusChange", // Saves a file automatically when you switch to another window or tab.
+  "files.trimTrailingWhitespace": true, // Removes any extra spaces at the end of lines on save.
+  "files.insertFinalNewline": true, // Ensures there is an empty line at the end of the file on save.
+  "explorer.compactFolders": true, // Collapses single-folder chains into one line for a cleaner look.
+  // =========================================================================
+  // Search & File Exclusions
+  // Optimizes file navigation and search by excluding irrelevant files and folders.
+  // =========================================================================
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.next/": true,
+    "**/.nuxt/": true,
+    "**/coverage/": true,
+    "**/*.log": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true
+  },
+  // =========================================================================
+  // Integrated Terminal & Debug Console
+  // Settings for the built-in terminal and debug output panels.
+  // =========================================================================
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.localEchoEnabled": "off",
+  "terminal.integrated.localEchoLatencyThreshold": -1,
+  "debug.console.fontSize": 13,
+  // =========================================================================
+  // Git & Version Control
+  // Enhances the built-in Git capabilities for a smoother workflow.
+  // =========================================================================
+  "git.autofetch": true, // Automatically fetches from your remotes periodically.
+  "git.enableSmartCommit": true, // Automatically stages all changes if there are no staged changes.
+  "git.confirmSync": false, // Skips the confirmation prompt before syncing with a remote.
+  "git.useEditorAsCommitInput": true, // Use the full editor for writing commit messages instead of the small input box.
+  "diffEditor.ignoreTrimWhitespace": true // Ignores whitespace changes in the diff view.
 }
