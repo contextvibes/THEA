@@ -1,0 +1,4 @@
+# Ignore patterns for Prettier
+
+# Ignore the Nix environment files
+.idx/

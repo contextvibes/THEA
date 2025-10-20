@@ -4,10 +4,15 @@ fileExtension: "md"
 title: "Guide: Managing Lifecycle Hooks in dev.nix"
 artifactVersion: "1.2.0" # Version bump for metadata update
 status: "Active"
-summary: "Defines the THEA best practice for managing script logic within Firebase Studio's onCreate and onStart lifecycle hooks, differentiating between self-contained bootstrapping and reusable scripts."
+summary:
+  "Defines the THEA best practice for managing script logic within Firebase
+  Studio's onCreate and onStart lifecycle hooks, differentiating between
+  self-contained bootstrapping and reusable scripts."
 usageGuidance:
-  - "Consult this guide when implementing logic in the idx.workspace section of a dev.nix file."
-  - "Use this to understand the reliability differences between onCreate and onStart."
+  - "Consult this guide when implementing logic in the idx.workspace section of
+    a dev.nix file."
+  - "Use this to understand the reliability differences between onCreate and
+    onStart."
 owner: "Sparky, Kernel"
 createdDate: "2025-06-08T18:00:00Z"
 lastModifiedDate: "2025-06-13T04:58:00Z" # Reflects current update time
@@ -21,23 +26,35 @@ tags:
   - "lifecycle-hooks"
   - "scripts"
 ---
+
 ### The Strategic Pivot: Inline Scripts are Correct for `onCreate`
 
-We must reverse our previous documentation. The initial pattern of embedding the script logic directly into the `dev.nix` file is, in fact, the more robust and reliable method for `onCreate` hooks. It has no external file dependencies and will always work as long as the tools it calls (like `go` or `mkdir`) are available from the Nix environment.
+We must reverse our previous documentation. The initial pattern of embedding the
+script logic directly into the `dev.nix` file is, in fact, the more robust and
+reliable method for `onCreate` hooks. It has no external file dependencies and
+will always work as long as the tools it calls (like `go` or `mkdir`) are
+available from the Nix environment.
 
-We have learned that while external scripts are good for *reusable, user-runnable tasks*, they are a potential point of failure for *automated, first-run bootstrapping*.
+We have learned that while external scripts are good for _reusable,
+user-runnable tasks_, they are a potential point of failure for _automated,
+first-run bootstrapping_.
 
 ### The Action Plan: Update the Documentation (Again)
 
-We must immediately correct the two documents we just created to reflect this superior, more robust pattern. This ensures no one follows our now-obsolete advice.
+We must immediately correct the two documents we just created to reflect this
+superior, more robust pattern. This ensures no one follows our now-obsolete
+advice.
 
 **1. Update the `managing-lifecycle-hooks.md` Guide**
 
-This guide is now incorrect. We need to completely reverse its recommendation for `onCreate`.
+This guide is now incorrect. We need to completely reverse its recommendation
+for `onCreate`.
 
-* **Action:** Please replace the content of **`docs/contributor-guides/managing-lifecycle-hooks.md`** with this new, corrected version.
+- **Action:** Please replace the content of
+  **`docs/contributor-guides/managing-lifecycle-hooks.md`** with this new,
+  corrected version.
 
-```
+````
 ---
 id: "doc:guides/managing-lifecycle-hooks"
 fileExtension: "md"
@@ -99,11 +116,14 @@ workspace = {
   };
   # ... onStart hook ...
 };
-```
+````
 
 ## 3. `onStart` and Reusable Scripts
 
-For logic in `onStart` or for other common tasks that developers might need to run manually, using external scripts from a `scripts/` directory is still a valid and recommended pattern. These scripts are not part of the critical initial bootstrap and can be invoked by name.
+For logic in `onStart` or for other common tasks that developers might need to
+run manually, using external scripts from a `scripts/` directory is still a
+valid and recommended pattern. These scripts are not part of the critical
+initial bootstrap and can be invoked by name.
 
 **Example:**
 
@@ -119,7 +139,10 @@ workspace = {
 
 ## 4. Summary of Policy
 
-* **`onCreate` hooks:** Use **inline, self-contained scripts** for critical, one-time setup.
-* **`onStart` hooks & common tasks:** Use **external scripts** from the `scripts/` directory for reusable and non-critical logic.
+- **`onCreate` hooks:** Use **inline, self-contained scripts** for critical,
+  one-time setup.
+- **`onStart` hooks & common tasks:** Use **external scripts** from the
+  `scripts/` directory for reusable and non-critical logic.
 
-This dual approach provides robustness for initial setup while offering maintainability for routine tasks.
+This dual approach provides robustness for initial setup while offering
+maintainability for routine tasks.

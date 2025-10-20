@@ -51,3 +51,4 @@ inbox/*
 !inbox/README.md
 notes.md
 context_*.md
+.env
