@@ -8,7 +8,7 @@ documentation, and the research that informs its intelligence.
 THEA's guidance is consumed by **ContextVibes** (a separate system) to provide
 AI-assisted development features directly within the developer's environment.
 
-## 1. Purpose of THEA
+## 1. Purpose of THEA --
 
 THEA aims to:
 
